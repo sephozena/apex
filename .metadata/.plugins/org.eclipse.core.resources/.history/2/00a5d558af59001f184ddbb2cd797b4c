@@ -1,0 +1,29 @@
+package apex.basepage;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import apex.utils.WebDriverUtils;
+
+
+
+public class BasePageObject<T extends  BasePageObject <T>> {
+	 protected WebDriver driver;
+	 protected WebDriverUtils webDriverUtils;
+
+	 
+	    public BasePageObject(WebDriver driver) {
+	        this.driver = driver;
+	        this.webDriverUtils = new WebDriverUtils(driver);
+	        PageFactory.initElements(driver, this);
+	    }
+	    
+//	    protected void pause(int seconds) {
+//	        try {
+//	            Thread.sleep(seconds * 1000);
+//	        } catch (InterruptedException e) {
+//	            Thread.currentThread().interrupt();
+//	        }
+//	    }
+	}
+

@@ -1,0 +1,32 @@
+package apex.functions;
+
+import org.openqa.selenium.WebDriver;
+
+import apex.pages.CheckoutPage;
+import apex.pages.CheckoutPage.CheckoutActions;
+import apex.pages.MainPage;
+import apex.pages.MainPage.MenuActions;
+
+public class OrderManagement {
+    private MainPage mainPage;
+    private MenuActions menuActions;
+    private CheckoutPage checkoutPage;
+    private CheckoutActions checkoutActions;
+
+    public OrderManagement(WebDriver driver) {
+        this.mainPage = new MainPage(driver);
+        this.checkoutPage = new CheckoutPage(driver);
+        
+        this.menuActions = mainPage.new MenuActions();
+        this.checkoutActions = checkoutPage.new CheckoutActions();
+    }
+
+    public void addPhoneToCart() {
+        menuActions.clickOffers();
+        // Add further actions as needed
+    }
+    
+    public void fillInDetails(String firstName, String lastName, String address, String province, String postalCode) {
+    	checkoutActions.fillInCheckoutDetails(null, null, null, null, null);
+    }
+}

@@ -1,0 +1,33 @@
+package apex.scripts;
+
+import java.util.Properties;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import static apex.basepage.TestData.getPropertyFile;
+import static apex.basepage.TestData.setDataFolder;
+
+
+import apex.basepage.BaseClass;
+import apex.functions.OrderManagement;
+import apex.utils.PropertiesDataFile;
+
+public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass{
+	
+	public static String data_folder = "TCAFS01";
+	public static String data_properties = "TCAFS01.properties";
+	private Properties testData;
+	
+    @BeforeTest
+    public void setUpTestData() {
+        // Load the data from tc01.properties
+        testData = PropertiesDataFile.loadProperties("user.dir");
+    }
+    @Test
+    public void TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout() {
+        OrderManagement orderManagement = new OrderManagement(driver);
+        System.out.println("test");
+        orderManagement.addPhoneToCart();
+    }
+}

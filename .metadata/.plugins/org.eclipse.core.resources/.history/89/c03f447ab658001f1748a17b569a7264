@@ -1,0 +1,9 @@
+package apex.basepage;
+
+import org.openqa.selenium.WebDriver;
+import org.apache.log4j.Logger;
+
+final class ThreadUtils {
+	  private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	  private static ThreadLocal<Logger> logger = new ThreadLocal<>();
+}

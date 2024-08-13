@@ -1,0 +1,116 @@
+package apex.functions;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.openqa.selenium.WebDriver;
+
+import apex.basepage.BaseClass;
+import apex.pages.CheckoutPage;
+import apex.pages.CheckoutPage.CheckoutActions;
+import apex.pages.MainPage;
+import apex.pages.MainPage.MainActions;
+import apex.pages.SignInPage;
+import apex.pages.SignInPage.SignInActions;
+import apex.utils.WebDriverUtils;
+
+
+public class OrderManagement extends BaseClass{
+	private WebDriverUtils driverUtils;
+    private MainPage mainPage;
+    private MainActions mainActions;
+    
+    private SignInPage signInPage;
+    private SignInActions signInActions;
+    
+    private CheckoutPage checkoutPage;
+    private CheckoutActions checkoutActions;
+
+    public OrderManagement(WebDriver driver) {
+        this.mainPage = new MainPage(driver);
+        this.checkoutPage = new CheckoutPage(driver);
+        this.signInPage = new SignInPage(driver);
+        
+        this.mainActions = mainPage.new MainActions();
+        this.checkoutActions = checkoutPage.new CheckoutActions();
+        this.signInActions = signInPage.new SignInActions();
+    }
+
+    /*
+     * adds dynamic item to cart
+     */
+    public void addPhoneToCart() {
+    	System.out.println(mainPage.lblCloseCartQty.getAttribute("textContent"));
+    	String oldCartQty = mainPage.lblCloseCartQty.getAttribute("textContent");
+    	mainActions.clickDynamicAddButton(1);
+    	
+    	waitForElementToBeVisible(mainPage.lblOpenCartQty, 5);
+    	String newCartQty = mainPage.lblOpenCartQty.getAttribute("textContent");
+    	
+    	assertThat(Integer.parseInt(newCartQty)).describedAs("Qty did not increase").isEqualTo((Integer.parseInt(oldCartQty)+1));
+    	System.out.println(mainPage.lblOpenCartQty.getAttribute("textContent") + "has been added to the cart");
+    }
+    
+    /*
+     * proceed to checkout
+     */
+    public void proceedToCheckout() {
+    	mainActions.proceedToCheckout();
+    	pause(3);
+    	assertThat(!checkoutPage.frmCheckout.isDisplayed()).describedAs("Navigated to Payments page").isTrue();
+    	System.out.println("Payment Form is not visible");
+    }
+    
+    /*
+     * verify if user is not signed-in
+     */
+    public void verifySignedOutUser() {
+    	assertThat(mainPage.btnSignIn.isDisplayed()).describedAs("Signin button is missing").isTrue();
+    	System.out.println("User is currently logged out");
+    }
+    
+    /*
+     * click signin button
+     */
+    public void verifySignInPage() {
+    	mainActions.clickSignInButton();
+    	pause(1);
+    	assertThat(signInPage.inputUsername.isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
+    	assertThat(signInPage.inputPassword.isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
+    	assertThat(signInPage.btnLogin.isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
+    	System.out.println("The login fields and button is displayed");
+    }
+    
+    
+    public void addMultiplePhoneToCartWithQuantities() {
+    	System.out.println(mainPage.lblCloseCartQty.getAttribute("textContent"));
+    	String oldCartQty = mainPage.lblCloseCartQty.getAttribute("textContent");
+    	mainActions.clickDynamicAddButton(1);
+    	mainActions.clickDynamicAddButton(1);
+    	mainActions.clickDynamicAddButton(2);
+
+    	int uniqueItemsInCart = 
+
+    	
+
+
+
+    	
+    	waitForElementToBeVisible(mainPage.lblOpenCartQty, 5);
+    	String newCartQty = mainPage.lblOpenCartQty.getAttribute("textContent");
+    	
+    	assertThat(Integer.parseInt(newCartQty)).describedAs("Qty did not increase").isEqualTo((Integer.parseInt(oldCartQty)+3));
+    	System.out.println(mainPage.lblOpenCartQty.getAttribute("textContent") + "has been added to the cart");
+    }
+    
+
+    public void verifyMultipleItemsInTheCart() {
+    	
+    }
+    
+    
+    
+    public void verifyCartSubTotal() {
+    }
+    
+
+}

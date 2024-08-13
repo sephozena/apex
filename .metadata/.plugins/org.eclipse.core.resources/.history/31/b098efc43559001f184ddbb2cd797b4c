@@ -1,0 +1,4 @@
+baseUrl=https://bstackdemo.com/
+username=demouser; invalid username; locked_user
+password=testingisfun99, invalid password;
+errorMessage=Invalid Username; Invalid Password;

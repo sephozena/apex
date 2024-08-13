@@ -1,0 +1,27 @@
+package apex.functions;
+
+import org.openqa.selenium.WebDriver;
+
+import apex.pages.CheckoutPage;
+import apex.pages.CheckoutPage.CheckoutActions;
+import apex.pages.MainPage;
+import apex.pages.MainPage.MenuActions;
+import apex.pages.SignInPage;
+
+public class LoginManagement {
+    private MainPage mainPage;
+    private MenuActions menuActions;
+    private CheckoutPage checkoutPage;
+    private CheckoutActions checkoutActions;
+
+    public LoginManagement(WebDriver driver) {
+    	this.signInPage = new SignInPage(driver);
+        this.mainPage = new MainPage(driver);
+        this.checkoutPage = new CheckoutPage(driver);
+        
+        this.menuActions = mainPage.new MenuActions();
+        this.checkoutActions = checkoutPage.new CheckoutActions();
+    }
+
+
+}

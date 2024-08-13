@@ -1,0 +1,44 @@
+package apex.utils;
+
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
+public class BaseTest {
+    protected WebDriver driver;
+
+    @BeforeClass
+    @Parameters({"browserName"})
+    public void launchBrowser(@Optional("chrome") String browserName) throws Exception{
+    	if(browser.equals("chrome")) {
+    		
+    	}
+    	
+	}else if(browser.equals("firefox")) {
+//		WebDriverManager.firefoxdriver();
+//		FirefoxOptions ffoptions = new FirefoxOptions();
+//		ffoptions.addArguments("--incognito"); // --private // --headless
+//		System.setProperty("webdriver.gecko.driver", "C:\\Users\\Seph\\EclipseWorkspace\\SeleniumWebDriverWithJava\\Drivers\\geckodriver.exe");
+//		WebDriverManager.firefoxdriver().setup();
+	driver = new FirefoxDriver(/*ffoptions*/);			
+	}
+    	
+    	
+    	//        driver = WebDriverFactory.getDriver();
+        driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
+    }
+
+    @AfterClass
+    public void endBrowser() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}

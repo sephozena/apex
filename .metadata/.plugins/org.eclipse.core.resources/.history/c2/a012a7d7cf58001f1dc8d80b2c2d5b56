@@ -1,0 +1,31 @@
+package apex.basepage;
+
+import apex.utils.ThreadUtils;
+import org.openqa.selenium.WebDriver;
+
+
+
+public class BasePageObject<T extends  BasePageObject <T>> {
+	 protected WebDriver driver;
+	 
+	    public BasePageObject(WebDriver driver) {
+	        this.driver = driver;
+	        PageFactory.initElements(driver, this);
+	    }
+	}
+//	  // Constructor using the driver passed to it
+//	  public BasePageObject(WebDriver driver) {
+//	    this.driver = driver;
+//	  }
+//	  
+//	  // Get method for the driver
+//	  public WebDriver getDriver() {
+//	    return this.driver;
+//	  }
+//
+//	  // Constructor using driver from thread-safe utility
+//	    public BasePageObject() {
+//	        this.driver = ThreadUtils.getDriverRef();
+//	    }
+//	}
+

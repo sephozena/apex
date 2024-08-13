@@ -1,0 +1,12 @@
+package apex.scripts;
+
+import org.testng.annotations.BeforeTest;
+
+public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout {
+	
+	@BeforeMethod
+	public void setExtent{
+		
+	}
+
+}

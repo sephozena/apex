@@ -1,0 +1,5 @@
+package apex.base;
+
+public @interface BeforeClass {
+
+}

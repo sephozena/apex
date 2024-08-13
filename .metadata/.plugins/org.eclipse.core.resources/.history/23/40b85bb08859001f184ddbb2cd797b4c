@@ -1,0 +1,63 @@
+package apex.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+import apex.basepage.BasePageObject;
+
+public class CheckoutPage extends BasePageObject<CheckoutPage> {
+	
+	public CheckoutPage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+	@FindBy(how = How.ID, using = "firstNameInput")
+	public WebElement inputFirstName;
+	
+	@FindBy(how = How.ID, using = "LastNameInput")
+	public WebElement inputLastName;
+
+	@FindBy(how = How.ID, using = "addressLine1Input")
+	public WebElement inputAddress;
+	
+	@FindBy(how = How.ID, using = "provinceInput")
+	public WebElement inputProvince;
+	
+	@FindBy(how = How.ID, using = "postCodeInput")
+	public WebElement inputPostalCode;
+	
+	@FindBy(how = How.ID, using = "checkout-shipping-continue")
+	public WebElement btnSubmit;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id='checkout-app']//div[@class='layout-main']")
+	public WebElement frmCheckout;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id='checkout-app']//article[@class='cart optimizedCheckout-orderSummary']")
+	public WebElement frmOrderSummary;
+	
+	
+	@FindBy(how = How.XPATH, using = "//*[@id='checkout-app']/div/div/aside/article/section[1]/ul")
+	public List<WebElement> orderSummaryProductListPrice;
+
+    // Method to fill in checkout details
+	public class CheckoutActions{
+	    public void fillInCheckoutDetails(String firstName, String lastName, String address, String province, String postalCode) {
+	        inputFirstName.sendKeys(firstName);
+	        inputLastName.sendKeys(lastName);
+	        inputAddress.sendKeys(address);
+	        inputProvince.sendKeys(province);
+	        inputPostalCode.sendKeys(postalCode);
+	    }
+
+	    // Method to submit the checkout
+	    public void submitCheckout() {
+	        btnSubmit.click();
+	    }
+	}
+
+}

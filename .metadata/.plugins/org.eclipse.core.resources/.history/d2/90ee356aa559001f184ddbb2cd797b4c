@@ -1,0 +1,7 @@
+package apex.scripts;
+
+import apex.basepage.BaseClass;
+
+public class TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites extends BaseClass{
+
+}

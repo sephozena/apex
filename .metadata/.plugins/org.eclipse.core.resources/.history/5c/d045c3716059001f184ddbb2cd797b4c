@@ -1,0 +1,39 @@
+package apex.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+import apex.basepage.BasePageObject;
+import apex.utils.WebDriverUtils;
+
+public class SignInPage extends BasePageObject<SignInPage> {
+
+		public SignInPage(WebDriver driver) {
+			super(driver);
+		}
+		
+		@FindBy(how = How.ID, using = "username")
+		public WebElement inputUsername;
+		
+		@FindBy(how = How.ID, using = "password")
+		public WebElement inputPassword;
+		
+		@FindBy(how = How.ID, using = "login-btn")
+		public WebElement btnLogin;
+		
+		@FindBy(how = How.XPATH, using = "//*[@id='login-btn']//following-sibling::h3[contains(.,'%s')]")
+		public WebElement lblErrorMessage;
+
+	    // Method to perform sign-in
+		public class SignInActions{
+					
+		    public void signInValidCredentials(String username, String password) {
+		        webDriverUtils.type(inputUsername, username);
+		        webDriverUtils.type(inputPassword, password);
+		        webDriverUtils.click(btnLogin);
+		    }
+		    
+		}
+}

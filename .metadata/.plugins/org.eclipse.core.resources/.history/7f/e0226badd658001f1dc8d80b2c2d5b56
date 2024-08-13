@@ -1,0 +1,20 @@
+package apex.functions;
+
+import apex.basepage.BaseClass;
+import apex.pages.MainPage;
+
+public class OrderManagement  {
+	
+	  private MainPage mainPage;
+  
+	  public OrderManagement() {
+		  // Initialize the MainPage using the WebDriver from BaseClass
+		  this.mainPage = new MainPage(driver);
+	    }
+	  
+	public  void addPhoneToCart() {
+		mainPage.shelfItemAddToCart.click();
+	}
+	
+
+}

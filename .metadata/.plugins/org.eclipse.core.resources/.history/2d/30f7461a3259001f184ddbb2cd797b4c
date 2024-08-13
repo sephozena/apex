@@ -1,0 +1,29 @@
+package apex.functions;
+
+import org.openqa.selenium.WebDriver;
+
+
+import apex.pages.SignInPage;
+import apex.utils.ConfigManager;
+
+public class LoginManagement {
+	private SignInPage signInPage;
+	private SingInActions signInActions;
+
+
+    public LoginManagement(WebDriver driver) {
+    	this.signInPage = new SignInPage(driver);
+    	
+    	this.signIn();
+    }
+    
+    public void signIn() {
+        String username = ConfigManager.getProperty("username");
+        String password = ConfigManager.getProperty("password");
+
+        signInPage.signIn(username, password);
+        signInPage.getBtnLogin().click();
+    }
+
+
+}

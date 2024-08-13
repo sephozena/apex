@@ -1,0 +1,30 @@
+package apex.scripts;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import apex.basepage.BaseClass;
+import apex.functions.OrderManagement;
+import apex.utils.PropertiesDataFile;
+
+public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
+    private PropertiesDataFile testData;
+
+    @BeforeTest
+    public void setUpTestData() {
+        // Load the data from TCAFS01.properties
+        String dataFolder = System.getProperty("user.dir") + "/src/test/java/apex/data/TCAFS01/";
+        testData = new PropertiesDataFile(dataFolder + "TCAFS01.properties");
+    }
+
+    @Test
+    public void TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout() {
+        OrderManagement orderManagement = new OrderManagement(driver);
+        orderManagement.addPhoneToCart();
+
+        // Use testData.get("key") to retrieve data from TCAFS01.properties
+        System.out.println("Item Quantity: " + testData.get("itemQty"));
+        
+        orderManagement.fillInDetails(null, null, null, null, null);
+    }
+}

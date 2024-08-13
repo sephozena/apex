@@ -1,0 +1,32 @@
+package apex.functions;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.openqa.selenium.WebDriver;
+
+import apex.basepage.BaseClass;
+import apex.pages.CheckoutPage;
+import apex.pages.CheckoutPage.CheckoutActions;
+
+public class PaymentManagement extends BaseClass {
+	
+	private CheckoutPage checkoutPage;
+	private CheckoutActions checkoutActions;
+
+    public PaymentManagement(WebDriver driver) {
+        this.checkoutPage = new CheckoutPage(driver);
+        this.checkoutActions = checkoutPage.new CheckoutActions();
+    }
+    
+    
+    public void fillInDetails(String firstName, String lastName, String address, String province, String postalCode) {
+    	checkoutActions.fillInCheckoutDetails(firstName, lastName, address, province, postalCode);
+    }
+    
+    
+    public void getTotalAmount() {
+    	checkoutActions.getTotalAmount();
+    	System.out.println("all amount has been added to the list");
+    }
+    
+}

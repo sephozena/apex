@@ -1,0 +1,30 @@
+package apex.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+import apex.basepage.BasePageObject;
+
+public class CheckoutPage extends BasePageObject<CheckoutPage> {
+	
+	@FindBy(how = How.ID, using = "firstNameInput")
+	private WebElement inputFirstName;
+	
+	@FindBy(how = How.ID, using = "LastNameInput")
+	private WebElement inputLastName;
+
+	@FindBy(how = How.ID, using = "addressLine1Input")
+	private WebElement inputAddress;
+	
+	@FindBy(how = How.ID, using = "provinceInput")
+	private WebElement inputProvince;
+	
+	@FindBy(how = How.ID, using = "postCodeInput")
+	private WebElement inputPostalCode;
+	
+	@FindBy(how = How.ID, using = "checkout-shipping-continue")
+	private WebElement btnSubmit;
+
+
+}

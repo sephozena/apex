@@ -1,0 +1,10 @@
+package apex.functions;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import apex.basepage.BaseClass;
+
+public class PaymentsManagement extends BaseClass {
+	
+
+
+}

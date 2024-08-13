@@ -1,0 +1,26 @@
+package apex.utils;
+
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
+public class BaseTest {
+    protected WebDriver driver;
+
+    @BeforeClass
+    @Parameters({"browserName"})
+    public void launchBrowser(@Optional("chrome") String browserName) throws Exception{
+        driver = WebDriverFactory.getDriver();
+        driver.manage().window().maximize();
+    }
+
+    @AfterClass
+    public void endBrowser() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}

@@ -1,0 +1,34 @@
+package apex.utils;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+public class ConfigManager {
+    private static Properties properties = new Properties();
+
+    static {
+        try (InputStream input = ConfigManager.class.getClassLoader().getResourceAsStream("resource/config.properties")) {
+            if (input == null) {
+                throw new RuntimeException("config.properties not found.");
+            }
+            properties.load(input);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load configuration properties", e);
+        }
+    }
+
+    public static String getProperty(String key) {
+        return properties.getProperty(key);
+    }
+    
+    // Method to get property with an index
+    public static String getProperty(String key, int index) {
+        String[] values = properties.getProperty(key, "").split(";");
+        if (index >= 0 && index < values.length) {
+            return values[index].trim();
+        }
+        throw new IndexOutOfBoundsException("Invalid index for key: " + key);
+    }
+}
+

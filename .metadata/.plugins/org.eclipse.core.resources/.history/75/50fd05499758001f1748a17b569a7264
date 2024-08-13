@@ -1,0 +1,39 @@
+package apex.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+public class MainPage {
+	
+	@FindBy(how = How.XPATH, using = "//a[@id='offers']")
+	private WebElement menuHeaderOffers;
+
+	@FindBy(how = How.XPATH, using = "//a[@id='orders']")
+	private WebElement menuHeaderOrders;
+
+	@FindBy(how = How.XPATH, using = "//a[@id='favourites']")
+	private WebElement menuHeaderFavourites;
+	
+	@FindBy(how = How.XPATH, using = "//span[@class='username']")
+	private WebElement menuHeaderUsername;
+	
+	@FindBy(how = How.XPATH, using = "//span[@id='logout']")
+	private WebElement menuHeaderLogout;
+	
+	@FindBy(how = How.XPATH, using = "//*[@class='shelf-container-header']")
+	private WebElement itemHeader;
+	
+	@FindBy(how = How.XPATH, using = "//*[@class='shelf-container-header']//div[@class='sort']//select//option[@value='%s']")
+	private WebElement orderByFilter;
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='filters']")
+	private WebElement vendorFilter;
+
+	@FindBy(how = How.XPATH, using = "//input[1]//following-sibling::span[contains(text(),'%s')")
+	private WebElement availableVendor;
+	
+	
+
+	
+}

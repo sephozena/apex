@@ -1,0 +1,5 @@
+package apex.utils;
+
+public class ConfigManager {
+
+}

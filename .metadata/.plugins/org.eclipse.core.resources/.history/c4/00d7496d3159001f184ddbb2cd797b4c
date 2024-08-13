@@ -1,0 +1,34 @@
+package apex.functions;
+
+import org.openqa.selenium.WebDriver;
+
+import apex.pages.CheckoutPage;
+import apex.pages.CheckoutPage.CheckoutActions;
+import apex.pages.MainPage;
+import apex.pages.MainPage.MenuActions;
+import apex.pages.SignInPage;
+import apex.utils.ConfigManager;
+
+public class LoginManagement {
+	private SignInPage signInPage;
+    private MainPage mainPage;
+    private MenuActions menuActions;
+    private CheckoutPage checkoutPage;
+    private CheckoutActions checkoutActions;
+
+    public LoginManagement(WebDriver driver) {
+    	this.signInPage = new SignInPage(driver);
+    	this.
+    }
+    
+    public void signIn() {
+        String username = ConfigManager.getProperty("username");
+        String password = ConfigManager.getProperty("password");
+
+        signInPage.getInputUsername().type(username);
+        signInPage.getInputPassword().type(password);
+        signInPage.getBtnLogin().click();
+    }
+
+
+}

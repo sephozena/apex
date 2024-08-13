@@ -1,0 +1,26 @@
+package apex.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+import apex.basepage.BasePageObject;
+import apex.utils.WebDriverUtils;
+
+public class FavouritesPage extends BasePageObject<FavouritesPage>{
+
+	public FavouritesPage(WebDriver driver) {
+		super(driver);
+	}
+	
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='shelf-item__price']//div[@class='val']")
+	public List<WebElement> shelfItem;
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='shelf-item__price']//div[@class='val']")
+	public WebElement lblFavouritePrice;
+	
+}

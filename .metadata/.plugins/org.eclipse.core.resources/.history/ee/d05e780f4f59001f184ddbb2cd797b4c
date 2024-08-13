@@ -1,0 +1,22 @@
+package apex.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+import apex.basepage.BasePageObject;
+import apex.utils.WebDriverUtils;
+
+public class OrdersPage extends BasePageObject<OrdersPage>{
+	private WebDriverUtils webDriverUtils;
+
+	public OrdersPage(WebDriver driver) {
+		super(driver);
+		this.webDriverUtils = new WebDriverUtils(driver);
+	}
+	
+	@FindBy(how = How.XPATH, using = "//*[@class='a-box shipment shipment-is-delivered']")
+	private WebElement placedOrders;
+	
+}

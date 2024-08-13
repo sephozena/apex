@@ -1,0 +1,33 @@
+package apex.functions;
+
+import org.openqa.selenium.WebDriver;
+
+import apex.pages.CheckoutPage;
+import apex.pages.CheckoutPage.CheckoutActions;
+import apex.pages.MainPage;
+import apex.pages.MainPage.MainActions;
+
+
+public class OrderManagement {
+    private MainPage mainPage;
+    private MainActions mainActions;
+    private CheckoutPage checkoutPage;
+    private CheckoutActions checkoutActions;
+
+    public OrderManagement(WebDriver driver) {
+        this.mainPage = new MainPage(driver);
+        this.checkoutPage = new CheckoutPage(driver);
+        
+        this.mainActions = mainPage.new MainActions();
+        this.checkoutActions = checkoutPage.new CheckoutActions();
+    }
+
+    public void addPhoneToCart() {
+    	mainActions.clickDynamicAddButton(1);
+        // Add further actions as needed
+    }
+    
+    public void fillInDetails(String firstName, String lastName, String address, String province, String postalCode) {
+    	checkoutActions.fillInCheckoutDetails(firstName, lastName, address, province, postalCode);
+    }
+}

@@ -1,0 +1,29 @@
+package apex.functions;
+import static org.assertj.core.api.Assertions.assertThat;
+import org.openqa.selenium.WebDriver;
+
+import apex.basepage.BaseClass;
+import apex.pages.SignInPage;
+import apex.pages.SignInPage.SignInActions;
+import apex.utils.ConfigManager;
+
+public class SignInManagement extends BaseClass {
+	private SignInPage signInPage;
+	private SignInActions signInActions;
+
+
+    public SignInManagement(WebDriver driver) {
+    	this.signInPage = new SignInPage(driver);
+    	this.signInActions = signInPage.new SignInActions();
+    }
+    
+    public void enterValidLoginInfo() {
+        String username = ConfigManager.getProperty("username",1);
+        String password = ConfigManager.getProperty("password", 1);
+        
+        
+        
+        
+        
+    }
+}

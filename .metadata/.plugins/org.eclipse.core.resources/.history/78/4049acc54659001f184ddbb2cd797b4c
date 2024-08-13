@@ -1,0 +1,51 @@
+package apex.scripts;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import apex.basepage.BaseClass;
+import apex.functions.SignInManagement;
+import apex.functions.OrderManagement;
+import apex.utils.ConfigManager;
+import apex.utils.PropertiesDataFile;
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
+    private PropertiesDataFile testData;
+
+    @BeforeTest
+    public void setUpTestData() {
+        // Load the data from TCAFS01.properties
+        String dataFolder = System.getProperty("user.dir") + "/src/test/java/apex/data/TCAFS01/";
+        testData = new PropertiesDataFile(dataFolder + "TCAFS01.properties");
+        String username = ConfigManager.getProperty("baseUrl");
+    }
+
+    @Test
+    public void TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout() {
+        /**
+         * 
+         */
+    	
+    	assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(ConfigManager.getProperty("baseUrl"));
+    	log().info("Navigated to the correct Browser!");
+    	
+    	
+//        SignInManagement signInManagement = new SignInManagement(driver);
+//        signInManagement.signIn();
+        
+        // Add item to cart
+        OrderManagement orderManagement = new OrderManagement(driver);
+        orderManagement.addPhoneToCart();
+        
+
+        // Retrieve data from TCAFS01.properties and fill in the details
+        orderManagement.fillInDetails(
+            testData.get("firstName"), 
+            testData.get("lastName"), 
+            testData.get("address"), 
+            testData.get("province"), 
+            testData.get("postalCode")
+        );
+    }
+}

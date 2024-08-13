@@ -1,0 +1,5 @@
+package apex.basepage;
+
+public class ThreadUtils {
+
+}

@@ -1,0 +1,23 @@
+package apex.functions;
+
+import org.openqa.selenium.WebDriver;
+
+import apex.pages.CheckoutPage;
+import apex.pages.MainPage;
+
+public class OrderManagement {
+    private MainPage mainPage;
+    private CheckoutPage checkoutPage;
+
+    public OrderManagement(WebDriver driver) {
+        this.mainPage = new MainPage(driver);
+        this.checkoutPage = new CheckoutPage(driver);
+        
+        this.menuActions = mainPage.new MenuActions();
+    }
+
+    public void addPhoneToCart() {
+        mainPage.clickOffers();// Example action
+        // Add further actions as needed
+    }
+}
