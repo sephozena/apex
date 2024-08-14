@@ -40,6 +40,8 @@ public class OrderManagement extends BaseClass{
     private FavouritesActions favouritesActions;
 
     public OrderManagement(WebDriver driver) {
+    	this.driverUtils = new WebDriverUtils(driver);
+    	
         this.mainPage = new MainPage(driver);
         this.checkoutPage = new CheckoutPage(driver);
         this.signInPage = new SignInPage(driver);
@@ -61,7 +63,8 @@ public class OrderManagement extends BaseClass{
     	String oldCartQty = mainPage.lblCloseCartQty.getAttribute("textContent");
     	mainActions.clickDynamicAddButton(1);
     	
-    	waitForElementToBeVisible(mainPage.lblOpenCartQty, 5);
+    	driverUtils.waitForElementToBeVisible(mainPage.lblOpenCartQty, 5);
+//    	waitForElementToBeVisible(mainPage.lblOpenCartQty, 5);
     	String newCartQty = mainPage.lblOpenCartQty.getAttribute("textContent");
     	
     	assertThat(Integer.parseInt(newCartQty)).describedAs("Qty did not increase").isEqualTo((Integer.parseInt(oldCartQty)+1));
@@ -73,9 +76,9 @@ public class OrderManagement extends BaseClass{
      */
     public void proceedToCheckout() {
     	mainActions.proceedToCheckout();
-    	pause(3);
-    	assertThat(checkoutPage.frmCheckout.isDisplayed()).describedAs("Payment Form is not visible").isTrue();
-    	System.out.println("Successfully Navigated to Payments page");
+    	driverUtils.pause(3);
+    	assertThat(checkoutPage.frmCheckout.isDisplayed()).describedAs("Checkout form is NOT displayed in a not signed-in user!").isTrue();
+    	System.out.println("Checkout form is displayed in a not signed-in user!");
     }
     
     /*
@@ -91,7 +94,7 @@ public class OrderManagement extends BaseClass{
      */
     public void verifySignInPage() {
     	mainActions.clickSignInButton();
-    	pause(1);
+    	driverUtils.pause(1);
     	assertThat(signInPage.inputUsername.isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
     	assertThat(signInPage.inputPassword.isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
     	assertThat(signInPage.btnLogin.isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
@@ -113,7 +116,8 @@ public class OrderManagement extends BaseClass{
     		mainPage.btnOpenCartIncreaseQty.get(i).click();
     	}
     	
-    	waitForElementToBeVisible(mainPage.lblOpenCartQty, 3);
+    	driverUtils.waitForElementToBeVisible(mainPage.lblOpenCartQty, 3);
+//    	waitForElementToBeVisible(mainPage.lblOpenCartQty, 3);
     	String newCartQty = mainPage.lblOpenCartQty.getAttribute("textContent");
     	
     	assertThat(Integer.parseInt(newCartQty)).describedAs("Qty did not increase").isEqualTo((Integer.parseInt(oldCartQty)+newItemQty));

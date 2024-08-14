@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="1" parallel="tests" name="Failed suite [Test Suite]" guice-stage="DEVELOPMENT" verbose="10">
-  <test thread-count="1" parallel="tests" name="Test Case 1(failed)" verbose="10">
-    <parameter name="browserName" value="chrome"/>
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
       <class name="apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout">
         <methods>
@@ -13,5 +12,5 @@
         </methods>
       </class> <!-- apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout -->
     </classes>
-  </test> <!-- Test Case 1(failed) -->
-</suite> <!-- Failed suite [Test Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

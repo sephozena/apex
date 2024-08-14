@@ -4,11 +4,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import apex.basepage.BaseClass;
-import apex.functions.SignInManagement;
 import apex.functions.OrderManagement;
 import apex.functions.PaymentManagement;
 import apex.utils.ConfigManager;
 import apex.utils.PropertiesDataFile;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
@@ -41,7 +41,6 @@ public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
         OrderManagement orderManagement = new OrderManagement(driver);
         orderManagement.addPhoneToCart();
         orderManagement.proceedToCheckout();
-        
 
         /*
          *  Retrieve data from TCAFS01.properties and fill in the details
@@ -54,5 +53,7 @@ public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
             testData.get("province"), 
             testData.get("postalCode")
         );
+        
+        paymentManagement.continueShopping();
     }
 }

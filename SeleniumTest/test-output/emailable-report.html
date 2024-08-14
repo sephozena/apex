@@ -8,74 +8,11 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">Test Suite</th></tr>
-<tr><td><a href="#t0">Test Case 1</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">26,838</td><td></td><td></td></tr>
-<tr class="stripe"><td><a href="#t1">Test Case 2</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">14,912</td><td></td><td></td></tr>
-<tr><td><a href="#t2">Test Case 3</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">16,092</td><td></td><td></td></tr>
-<tr class="stripe"><td><a href="#t3">Test Case </a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">11,328</td><td></td><td></td></tr>
-<tr><th>Total</th><th class="num">3</th><th class="num">0</th><th class="num">0</th><th class="num attn">1</th><th class="num">69,170</th><th colspan="2"></th></tr>
+<tr><th colspan="8">Default suite</th></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">13,689</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test Case 1 &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout</td><td><a href="#m0">TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout</a></td><td rowspan="1">1723578525332</td><td rowspan="1">19000</td></tr></tbody>
-<tbody id="t1"><tr><th colspan="4">Test Case 2 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities</td><td><a href="#m1">TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities</a></td><td rowspan="1">1723578551180</td><td rowspan="1">8138</td></tr></tbody>
-<tbody id="t2"><tr><th colspan="4">Test Case 3 &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">apex.scripts.TCAFS03_SignedIn_ViewOrderHistory</td><td><a href="#m2">TCAFS03_SignedIn_ViewOrderHistory</a></td><td rowspan="1">1723578565752</td><td rowspan="1">9660</td></tr></tbody>
-<tbody id="t3"><tr><th colspan="4">Test Case  &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites</td><td><a href="#m3">TCAFS03_SignedIn_ViewOrderHistory</a></td><td rowspan="1">1723578582032</td><td rowspan="1">4722</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites</td><td><a href="#m0">TCAFS03_SignedIn_ViewOrderHistory</a></td><td rowspan="1">1723615059185</td><td rowspan="1">5010</td></tr></tbody>
 </table>
-<h2>Test Case 1</h2><h3 id="m0">apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout#TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;checkout-app&apos;]//div[@class=&apos;layout-main&apos;]&quot;}
-  (Session info: chrome=127.0.6533.100)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.23.0&apos;, revision: &apos;4df0a231af&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [1ef32f48f29e444b46646e0ebeaf3bff, findElement {value=//*[@id=&apos;checkout-app&apos;]//div[@class=&apos;layout-main&apos;], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.100, chrome: {chromedriverVersion: 127.0.6533.99 (f31af5097d90..., userDataDir: C:\Users\Seph\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51579}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51579/devtoo..., se:cdpVersion: 127.0.6533.100, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 1ef32f48f29e444b46646e0ebeaf3bff
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:351)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy19.isDisplayed(Unknown Source)
-	at apex.functions.OrderManagement.proceedToCheckout(OrderManagement.java:77)
-	at apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout(TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout.java:43)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:794)
-	at org.testng.TestRunner.run(TestRunner.java:596)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-	at org.testng.SuiteRunner.access$000(SuiteRunner.java:28)
-	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:418)
-	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Test Case 2</h2><h3 id="m1">apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities#TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Test Case 3</h2><h3 id="m2">apex.scripts.TCAFS03_SignedIn_ViewOrderHistory#TCAFS03_SignedIn_ViewOrderHistory</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Test Case </h2><h3 id="m3">apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites#TCAFS03_SignedIn_ViewOrderHistory</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Default test</h2><h3 id="m0">apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites#TCAFS03_SignedIn_ViewOrderHistory</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

@@ -22,13 +22,7 @@ public class ConfigManager {
         return properties.getProperty(key);
     }
     
-    // Method to get property with an index
-//    public static String getProperty(String key, int index) {
-//        String[] values = properties.getProperty(key, "").split(";");
-//        if (index >= 0 && index < values.length) {
-//            return values[index].trim();
-//        }
-//        throw new IndexOutOfBoundsException("Invalid index for key: " + key);
+
     public static String getProperty(String key, int index) {
         String[] values = properties.getProperty(key, "").split(";");
         if (index >= 0 && index < values.length) {

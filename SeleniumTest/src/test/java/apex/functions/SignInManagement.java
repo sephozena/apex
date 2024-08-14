@@ -10,8 +10,11 @@ import apex.pages.MainPage.MainActions;
 import apex.pages.SignInPage;
 import apex.pages.SignInPage.SignInActions;
 import apex.utils.ConfigManager;
+import apex.utils.WebDriverUtils;
 
 public class SignInManagement extends BaseClass {
+	private WebDriverUtils driverUtils;
+
 	private SignInPage signInPage;
 	private SignInActions signInActions;
 	
@@ -20,6 +23,7 @@ public class SignInManagement extends BaseClass {
 
 
     public SignInManagement(WebDriver driver) {
+    	this.driverUtils = new WebDriverUtils(driver);
     	this.signInPage = new SignInPage(driver);
     	this.mainPage = new MainPage(driver);
     	
@@ -33,7 +37,7 @@ public class SignInManagement extends BaseClass {
         String username = ConfigManager.getProperty("username",0);
         String password = ConfigManager.getProperty("password",0);
         signInActions.signIn(username, password);
-        pause(3);
+        driverUtils.pause(3);
         assertThat(mainPage.btnMenuHeaderUsername.getAttribute("textContent")).describedAs("Username not found! ").isEqualTo(username);
         System.out.println(mainPage.btnMenuHeaderUsername.getAttribute("textContent") + " successfully signed-in");
         

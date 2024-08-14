@@ -75,5 +75,21 @@ public class WebDriverUtils {
     public void clickUsingJS(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
+    
+    // Explicit wait method
+    public void waitForElementToBeVisible(WebElement element, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+    
+    // Pause method
+    public void pause(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
 
 }

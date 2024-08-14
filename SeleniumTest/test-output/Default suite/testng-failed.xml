@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="apex.scripts.TCAFS03_SignedIn_ViewOrderHistory">
+      <class name="apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout">
         <methods>
-          <include name="TCAFS03_SignedIn_ViewOrderHistory"/>
+          <include name="TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout"/>
           <include name="closeBrowser"/>
           <include name="setUpTestData"/>
           <include name="launchBrowser"/>
         </methods>
-      </class> <!-- apex.scripts.TCAFS03_SignedIn_ViewOrderHistory -->
+      </class> <!-- apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

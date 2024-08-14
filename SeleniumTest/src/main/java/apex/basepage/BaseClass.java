@@ -20,12 +20,7 @@ import apex.utils.ThreadUtils;
 
 public class BaseClass {
     protected WebDriver driver;
-    protected static final Logger logger = (Logger) LogManager.getLogger(BaseClass.class);
-    public Logger log() {
-        return logger;
-    }
-
-    
+       
     
     private WebDriver initializeDriver(String browserName) {
         if ("chrome".equals(browserName)) {
@@ -36,21 +31,6 @@ public class BaseClass {
         throw new IllegalArgumentException("Invalid browser name: " + browserName);
     }
     
-    // Explicit wait method
-    protected void waitForElementToBeVisible(WebElement element, int seconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-    // Pause method
-    protected void pause(int seconds) {
-        try {
-            Thread.sleep(seconds * 1000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            log().error("Thread was interrupted during sleep", e);
-        }
-    }
     @BeforeClass(alwaysRun = true)
     @Parameters({"browserName"})
     public void launchBrowser(@Optional("chrome") String browserName) {
