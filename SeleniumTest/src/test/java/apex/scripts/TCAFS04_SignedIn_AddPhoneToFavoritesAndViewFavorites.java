@@ -3,6 +3,7 @@ package apex.scripts;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import apex.basepage.BaseClass;
@@ -20,10 +21,11 @@ public class TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites extends BaseCl
     	/*
     	 * load Test Data 
     	 */
-    	String dataFolder = System.getProperty("user.dir") + "/src/test/java/apex/data/TCAFS03/";
-        testData = new PropertiesDataFile(dataFolder + "TCAFS03.properties");
+	    String propertiesFilePath = "resources/data/TCAFS04/TCAFS04.properties";
+	    testData = new PropertiesDataFile(propertiesFilePath);
     }
-    @Test
+    @Test(groups = {"signed-in"})
+    @Parameters({"browser"})
     public void TCAFS03_SignedIn_ViewOrderHistory() {
     	String baseUrl = ConfigManager.getProperty("baseUrl");
     	

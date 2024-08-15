@@ -1,36 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="3" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-14T13:57:30 CST" name="Default suite" finished-at="2024-08-14T13:57:44 CST" duration-ms="13689">
+  <suite started-at="2024-08-15T20:08:38 CST" name="Test Suite" finished-at="2024-08-15T20:10:32 CST" duration-ms="113860">
     <groups>
+      <group name="signed-in">
+        <method signature="TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities()[pri:0, instance:apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities@655f7ea]" name="TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities" class="apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities"/>
+        <method signature="TCAFS03_SignedIn_ViewOrderHistory.TCAFS03_SignedIn_ViewOrderHistory()[pri:0, instance:apex.scripts.TCAFS03_SignedIn_ViewOrderHistory@6da00fb9]" name="TCAFS03_SignedIn_ViewOrderHistory" class="apex.scripts.TCAFS03_SignedIn_ViewOrderHistory"/>
+        <method signature="TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites.TCAFS03_SignedIn_ViewOrderHistory()[pri:0, instance:apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites@3a3e4aff]" name="TCAFS03_SignedIn_ViewOrderHistory" class="apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites"/>
+      </group> <!-- signed-in -->
+      <group name="non-signedin">
+        <method signature="TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout()[pri:0, instance:apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout@4bd1f8dd]" name="TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout" class="apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout"/>
+      </group> <!-- non-signedin -->
     </groups>
-    <test started-at="2024-08-14T13:57:30 CST" name="Default test" finished-at="2024-08-14T13:57:44 CST" duration-ms="13689">
-      <class name="apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites">
-        <test-method is-config="true" signature="setUpTestData()[pri:0, instance:apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites@71def8f8]" started-at="2024-08-14T13:57:30 CST" name="setUpTestData" finished-at="2024-08-14T13:57:30 CST" duration-ms="7" status="PASS">
+    <test started-at="2024-08-15T20:08:38 CST" name="Test Case 1" finished-at="2024-08-15T20:09:15 CST" duration-ms="37436">
+      <class name="apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout">
+        <test-method is-config="true" signature="setUpTestData()[pri:0, instance:apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout@4bd1f8dd]" started-at="2024-08-15T20:08:38 CST" name="setUpTestData" finished-at="2024-08-15T20:08:38 CST" duration-ms="9" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpTestData -->
-        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites@71def8f8]" started-at="2024-08-14T13:57:30 CST" name="launchBrowser" finished-at="2024-08-14T13:57:39 CST" duration-ms="8476" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout@4bd1f8dd]" started-at="2024-08-15T20:08:38 CST" name="launchBrowser" finished-at="2024-08-15T20:08:56 CST" duration-ms="18175" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[chrome]]>
+                <![CDATA[firefox]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="TCAFS03_SignedIn_ViewOrderHistory()[pri:0, instance:apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites@71def8f8]" started-at="2024-08-14T13:57:39 CST" name="TCAFS03_SignedIn_ViewOrderHistory" finished-at="2024-08-14T13:57:44 CST" duration-ms="5010" status="PASS">
+        <test-method signature="TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout()[pri:0, instance:apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout@4bd1f8dd]" started-at="2024-08-15T20:08:56 CST" name="TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout" finished-at="2024-08-15T20:09:15 CST" duration-ms="18534" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[Unable to locate element: //*[@id='checkout-app']//div[@class='layout-main']
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.23.0', revision: '4df0a231af'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.20'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [013d949b-667a-4fd5-bccc-a6118f22c737, findElement {value=//*[@id='checkout-app']//div[@class='layout-main'], using=xpath}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 129.0.1, moz:accessibilityChecks: false, moz:buildID: 20240812083845, moz:debuggerAddress: 127.0.0.1:17214, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 20944, moz:profile: C:\Users\Seph\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:17214/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Session ID: 013d949b-667a-4fd5-bccc-a6118f22c737]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to locate element: //*[@id='checkout-app']//div[@class='layout-main']
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.23.0', revision: '4df0a231af'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.20'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [013d949b-667a-4fd5-bccc-a6118f22c737, findElement {value=//*[@id='checkout-app']//div[@class='layout-main'], using=xpath}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 129.0.1, moz:accessibilityChecks: false, moz:buildID: 20240812083845, moz:debuggerAddress: 127.0.0.1:17214, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 20944, moz:profile: C:\Users\Seph\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:17214/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Session ID: 013d949b-667a-4fd5-bccc-a6118f22c737
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:351)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at com.sun.proxy.$Proxy19.isDisplayed(Unknown Source)
+at apex.functions.OrderManagement.proceedToCheckout(OrderManagement.java:80)
+at apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout(TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout.java:45)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.access$000(SuiteRunner.java:28)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:418)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+at java.base/java.lang.Thread.run(Thread.java:834)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout@4bd1f8dd]" started-at="2024-08-15T20:09:15 CST" name="closeBrowser" finished-at="2024-08-15T20:09:15 CST" duration-ms="678" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout -->
+    </test> <!-- Test Case 1 -->
+    <test started-at="2024-08-15T20:09:16 CST" name="Test Case 2" finished-at="2024-08-15T20:09:44 CST" duration-ms="28240">
+      <class name="apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities">
+        <test-method is-config="true" signature="setUpTestData()[pri:0, instance:apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities@655f7ea]" started-at="2024-08-15T20:09:16 CST" name="setUpTestData" finished-at="2024-08-15T20:09:16 CST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpTestData -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities@655f7ea]" started-at="2024-08-15T20:09:16 CST" name="launchBrowser" finished-at="2024-08-15T20:09:34 CST" duration-ms="18030" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities()[pri:0, instance:apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities@655f7ea]" started-at="2024-08-15T20:09:34 CST" name="TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities" finished-at="2024-08-15T20:09:43 CST" duration-ms="9438" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities@655f7ea]" started-at="2024-08-15T20:09:43 CST" name="closeBrowser" finished-at="2024-08-15T20:09:44 CST" duration-ms="768" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities -->
+    </test> <!-- Test Case 2 -->
+    <test started-at="2024-08-15T20:09:44 CST" name="Test Case 3" finished-at="2024-08-15T20:10:13 CST" duration-ms="29339">
+      <class name="apex.scripts.TCAFS03_SignedIn_ViewOrderHistory">
+        <test-method is-config="true" signature="setUpTestData()[pri:0, instance:apex.scripts.TCAFS03_SignedIn_ViewOrderHistory@6da00fb9]" started-at="2024-08-15T20:09:44 CST" name="setUpTestData" finished-at="2024-08-15T20:09:44 CST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpTestData -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:apex.scripts.TCAFS03_SignedIn_ViewOrderHistory@6da00fb9]" started-at="2024-08-15T20:09:44 CST" name="launchBrowser" finished-at="2024-08-15T20:10:03 CST" duration-ms="18999" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="TCAFS03_SignedIn_ViewOrderHistory()[pri:0, instance:apex.scripts.TCAFS03_SignedIn_ViewOrderHistory@6da00fb9]" started-at="2024-08-15T20:10:03 CST" name="TCAFS03_SignedIn_ViewOrderHistory" finished-at="2024-08-15T20:10:12 CST" duration-ms="9494" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TCAFS03_SignedIn_ViewOrderHistory -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites@71def8f8]" started-at="2024-08-14T13:57:44 CST" name="closeBrowser" finished-at="2024-08-14T13:57:44 CST" duration-ms="163" status="PASS">
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:apex.scripts.TCAFS03_SignedIn_ViewOrderHistory@6da00fb9]" started-at="2024-08-15T20:10:12 CST" name="closeBrowser" finished-at="2024-08-15T20:10:13 CST" duration-ms="843" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- apex.scripts.TCAFS03_SignedIn_ViewOrderHistory -->
+    </test> <!-- Test Case 3 -->
+    <test started-at="2024-08-15T20:10:13 CST" name="Test Case " finished-at="2024-08-15T20:10:32 CST" duration-ms="18807">
+      <class name="apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites">
+        <test-method is-config="true" signature="setUpTestData()[pri:0, instance:apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites@3a3e4aff]" started-at="2024-08-15T20:10:13 CST" name="setUpTestData" finished-at="2024-08-15T20:10:13 CST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpTestData -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites@3a3e4aff]" started-at="2024-08-15T20:10:13 CST" name="launchBrowser" finished-at="2024-08-15T20:10:26 CST" duration-ms="12832" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="TCAFS03_SignedIn_ViewOrderHistory()[pri:0, instance:apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites@3a3e4aff]" started-at="2024-08-15T20:10:26 CST" name="TCAFS03_SignedIn_ViewOrderHistory" finished-at="2024-08-15T20:10:31 CST" duration-ms="5227" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TCAFS03_SignedIn_ViewOrderHistory -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites@3a3e4aff]" started-at="2024-08-15T20:10:31 CST" name="closeBrowser" finished-at="2024-08-15T20:10:32 CST" duration-ms="746" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
       </class> <!-- apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Test Case  -->
+  </suite> <!-- Test Suite -->
 </testng-results>

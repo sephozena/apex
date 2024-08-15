@@ -26,18 +26,28 @@ public final class ThreadUtils {
     }
 
     // Public method to get Logger instance
-    public static Logger getLogger() {
-        Logger loggerRef = logger.get();
-        if (loggerRef == null) {
-            throw new IllegalStateException("Logger instance has not been set for this thread.");
-        }
-        return loggerRef;
-    }
+//    public static Logger getLogger() {
+//        Logger loggerRef = logger.get();
+//        if (loggerRef == null) {
+//            throw new IllegalStateException("Logger instance has not been set for this thread.");
+//        }
+//        return loggerRef;
+//    }
+//
+//    // Public method to set Logger instance
+//    public static void setLogger(Logger logger) {
+//        ThreadUtils.logger.set(logger);
+//    }
+    
+    public static synchronized Logger getLogger() {
+        return logger.get();
+      }
+      
 
-    // Public method to set Logger instance
-    public static void setLogger(Logger logger) {
-        ThreadUtils.logger.set(logger);
-    }
+      
+      public static synchronized void setLogger(Logger loggerParam) {
+        logger.set(loggerParam);
+      }
     
     // Public method to get Data Folder
     public static String getDataFolder() {

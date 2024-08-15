@@ -1,6 +1,9 @@
 package apex.scripts;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import apex.basepage.BaseClass;
@@ -8,8 +11,6 @@ import apex.functions.OrderManagement;
 import apex.functions.PaymentManagement;
 import apex.utils.ConfigManager;
 import apex.utils.PropertiesDataFile;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
     private PropertiesDataFile testData;
@@ -20,12 +21,13 @@ public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
     	/*
     	 * load Test Data 
     	 */
-    	String dataFolder = System.getProperty("user.dir") + "/src/test/java/apex/data/TCAFS01/";
-        testData = new PropertiesDataFile(dataFolder + "TCAFS01.properties");
+	    String propertiesFilePath = "resources/data/TCAFS01/TCAFS01.properties";
+	    testData = new PropertiesDataFile(propertiesFilePath);
         
     }
 
-    @Test
+    @Test(groups = {"non-signedin"})
+    @Parameters({"browser"})
     public void TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout() {
     	String baseUrl = ConfigManager.getProperty("baseUrl");
     	

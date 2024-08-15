@@ -1,8 +1,7 @@
 package apex.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesDataFile {
@@ -14,8 +13,20 @@ public class PropertiesDataFile {
     }
 
     private void loadProperties(String filePath) {
-        try (FileInputStream fis = new FileInputStream(new File(filePath))) {
-            prop.load(fis);
+    	
+    	/*
+    	 * load properties from class path using File Input Stream
+    	 */
+//        try (FileInputStream fis = new FileInputStream(new File(filePath))) {
+//            prop.load(fis);
+    	/*
+    	 * load properties from class path using InputStream
+    	 */
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
+            if (inputStream == null) {
+                throw new IOException("Property file '" + filePath + "' not found in the classpath");
+            }
+            prop.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -23,5 +34,9 @@ public class PropertiesDataFile {
 
     public String get(String key) {
         return prop.getProperty(key);
+    }
+    
+    public String set(String key, String value) {
+    	return  (String) prop.setProperty(key, value);
     }
 }

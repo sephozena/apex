@@ -8,7 +8,7 @@ public class ConfigManager {
     private static Properties properties = new Properties();
 
     static {
-        try (InputStream input = ConfigManager.class.getClassLoader().getResourceAsStream("resource/config.properties")) {
+        try (InputStream input = ConfigManager.class.getClassLoader().getResourceAsStream("resources/config.properties")) {
             if (input == null) {
                 throw new RuntimeException("config.properties not found.");
             }

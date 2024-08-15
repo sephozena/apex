@@ -75,7 +75,7 @@ public class CheckoutPage extends BasePageObject<CheckoutPage> {
 	    		System.out.println(orderSummaryProductListPrice.get(i).getAttribute("innerText").replaceAll("[^\\d.]", "") + " has been added to the list");
 	    	}
 	    	// List to store prices as integers
-	    	List<Integer> productListPriceInt = new ArrayList<>();
+	    	List<Integer> productListPriceInt = new ArrayList<Integer>();
 
 	    	// Convert the string prices to integers and add to the list
 	    	for (String priceStr : productListPrice) {

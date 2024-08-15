@@ -3,13 +3,10 @@ package apex.basepage;
 import java.time.Duration;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
@@ -20,22 +17,31 @@ import apex.utils.ThreadUtils;
 
 public class BaseClass {
     protected WebDriver driver;
+    private static final Logger log = LogManager.getLogger();
        
     
-    private WebDriver initializeDriver(String browserName) {
-        if ("chrome".equals(browserName)) {
+    private WebDriver initializeDriver(String browser) {
+        if ("chrome".equals(browser)) {
+        	System.out.println("Initializing WebDriver for browser: " + browser);
+        	log.info("basdlasdlasdl");
             return new ChromeDriver();
-        } else if ("firefox".equals(browserName)) {
+            
+        } else if ("firefox".equals(browser)) {
+        	System.out.println("Initializing WebDriver for browser: " + browser);
+        	log.info("basdlasdlasdl");
+
             return new FirefoxDriver();
         }
-        throw new IllegalArgumentException("Invalid browser name: " + browserName);
+        throw new IllegalArgumentException("Invalid browser name: " + browser);
     }
     
     @BeforeClass(alwaysRun = true)
-    @Parameters({"browserName"})
-    public void launchBrowser(@Optional("chrome") String browserName) {
+    @Parameters({"browser"})
+    public void launchBrowser(@Optional("firefox") String browserName) {
         driver = initializeDriver(browserName);
         ThreadUtils.setDriverRef(driver);
+		Logger log = ThreadUtils.getLogger();
+
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
@@ -49,6 +55,11 @@ public class BaseClass {
         if (driver != null) {
             driver.quit();
         }
+    }
+    
+    
+    public static Logger log() {
+      return ThreadUtils.getLogger();
     }
     
     
