@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="1" parallel="tests" name="Failed suite [Test Suite]" guice-stage="DEVELOPMENT" verbose="10">
-  <test thread-count="1" parallel="tests" name="Test Case 1(failed)" verbose="10">
-    <parameter name="browserName" value="chrome"/>
+<suite thread-count="1" parallel="tests" name="Failed suite [Test Suite]" guice-stage="DEVELOPMENT" verbose="5">
+  <test thread-count="1" parallel="tests" name="Test Case 1(failed)" verbose="5">
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout">
         <methods>

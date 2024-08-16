@@ -95,9 +95,9 @@ public class OrderManagement extends BaseClass{
     public void verifySignInPage() {
     	mainActions.clickSignInButton();
     	driverUtils.pause(1);
-    	assertThat(signInPage.inputUsername.isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
-    	assertThat(signInPage.inputPassword.isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
-    	assertThat(signInPage.btnLogin.isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
+    	assertThat(signInActions.inputUsername().isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
+    	assertThat(signInActions.inputPassword().isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
+    	assertThat(signInActions.btnLogin().isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
     	System.out.println("The login fields and button is displayed");
     }
     

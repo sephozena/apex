@@ -64,3 +64,20 @@
 1723525898602	Rename type 'LoginManagement'
 1723542734063	Rename type 'PaymentsManagement'
 1723611584972	Delete element
+1723704330886	Rename package 'resource'
+1723704604246	Move 'resources' to 'apex'
+1723704685601	Move 'resources' to 'test'
+1723704714735	Copy folder
+1723704719779	Delete element
+1723704722133	Copy folder
+1723706576238	Delete element
+1723706661079	Delete element
+1723706664024	Delete element
+1723706679828	Delete element
+1723706873398	Copy package
+1723706884088	Delete element
+1723706896082	Delete element
+1723706935249	Copy file
+1723707557584	Copy file
+1723710791877	Copy folders
+1723710811801	Delete element

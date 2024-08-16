@@ -65,7 +65,7 @@ public class CheckoutPage extends BasePageObject<CheckoutPage> {
 	    }
 	    
 	    public int getTotalAmount() {
-	    	List<String> productListPrice = new ArrayList<String>();
+	    	var productListPrice = new ArrayList<String>();
 	    	int productListCount = orderSummaryProductListPrice.size();
 	    	System.out.println(orderSummaryProductListPrice.size() +" this is the productListCount");
 	    	

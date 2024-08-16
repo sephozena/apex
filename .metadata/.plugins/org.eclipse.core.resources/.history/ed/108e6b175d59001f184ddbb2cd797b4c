@@ -1,7 +1,0 @@
-package apex.scripts;
-
-import apex.basepage.BaseClass;
-
-public class TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities extends BaseClass {
-
-}

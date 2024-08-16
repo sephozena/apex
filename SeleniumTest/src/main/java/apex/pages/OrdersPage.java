@@ -32,7 +32,9 @@ public class OrdersPage extends BasePageObject<OrdersPage>{
 	public class OrdersActions {
 		
 		public  String verifyItemDetails() {
-			return firstItemDescription.getAttribute("innerText").trim() +" - "+ firstItemPrice.getAttribute("innerText").trim() ;
+			var itemDescription = firstItemDescription.getAttribute("innerText").trim();
+			var itemPrice = firstItemPrice.getAttribute("innerText").trim();
+			return itemDescription +" - "+ itemPrice;
 			
 		}
 		

@@ -18,22 +18,22 @@ public class SignInPage extends BasePageObject<SignInPage>{
 		}
 		
 		@FindBy(how = How.XPATH, using = "//div[@id='username']//input[@id='react-select-2-input']")
-		public WebElement inputUsername2;
+		private WebElement inputUsername2;
 		
 		@FindBy(how = How.XPATH, using = "//div[@id='username']")
-		public WebElement inputUsername;
+		private WebElement inputUsername;
 		
 		@FindBy(how = How.XPATH, using = "//div[@id='password']//input[@id='react-select-3-input']")
-		public WebElement inputPassword2;
+		private WebElement inputPassword2;
 		
 		@FindBy(how = How.XPATH, using = "//div[@id='password']")
-		public WebElement inputPassword;
+		private WebElement inputPassword;
 		
 		@FindBy(how = How.ID, using = "login-btn")
-		public WebElement btnLogin;
+		private WebElement btnLogin;
 		
 		@FindBy(how = How.XPATH, using = "//*[@id='login-btn']//following-sibling::h3[contains(.,'%s')]")
-		public WebElement lblErrorMessage;
+		private WebElement lblErrorMessage;
 
 	    // Method to perform sign-in
 		public class SignInActions{
@@ -50,6 +50,22 @@ public class SignInPage extends BasePageObject<SignInPage>{
 
 		        webDriverUtils.click(btnLogin);
 		        
+		    }
+		    
+		    public String getErrorMessage() {
+		    	return lblErrorMessage.getText();
+		    }
+		    
+		    public WebElement inputUsername() {
+		    	return inputUsername;
+		    }
+		    
+		    public WebElement inputPassword() {
+		    	return inputPassword;
+		    }
+		    
+		    public WebElement btnLogin() {
+		    	return btnLogin;
 		    }
 		    
 		}

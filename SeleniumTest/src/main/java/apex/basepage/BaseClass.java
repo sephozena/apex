@@ -37,7 +37,7 @@ public class BaseClass {
     
     @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})
-    public void launchBrowser(@Optional("firefox") String browserName) {
+    public void launchBrowser(@Optional("chrome") String browserName) {
         driver = initializeDriver(browserName);
         ThreadUtils.setDriverRef(driver);
 		Logger log = ThreadUtils.getLogger();
