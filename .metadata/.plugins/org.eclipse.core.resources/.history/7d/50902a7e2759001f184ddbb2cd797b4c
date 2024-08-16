@@ -1,7 +1,0 @@
-package apex.pages;
-
-import apex.basepage.BasePageObject;
-
-public class FavouritesPage extends BasePageObject<FavouritesPage>{
-
-}

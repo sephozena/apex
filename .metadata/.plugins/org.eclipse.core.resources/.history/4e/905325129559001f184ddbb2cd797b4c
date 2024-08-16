@@ -1,7 +1,0 @@
-package apex.scripts;
-
-import apex.basepage.BaseClass;
-
-public class TCAFS03_SignedIn_ViewOrderHistory extends BaseClass{
-
-}

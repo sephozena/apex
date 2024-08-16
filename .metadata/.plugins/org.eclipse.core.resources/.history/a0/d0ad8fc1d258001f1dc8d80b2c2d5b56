@@ -1,6 +1,0 @@
-package apex.basepage;
-
-import utils.PropertiesDataFile;
-public class TestData {
-
-}
