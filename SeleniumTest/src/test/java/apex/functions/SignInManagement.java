@@ -38,8 +38,8 @@ public class SignInManagement extends BaseClass {
         String password = ConfigManager.getProperty("password",0);
         signInActions.signIn(username, password);
         driverUtils.pause(3);
-        assertThat(mainPage.btnMenuHeaderUsername.getAttribute("textContent")).describedAs("Username not found! ").isEqualTo(username);
-        System.out.println(mainPage.btnMenuHeaderUsername.getAttribute("textContent") + " successfully signed-in");
+        assertThat(mainActions.menuHeaderUsername().getAttribute("textContent")).describedAs("Username not found! ").isEqualTo(username);
+        System.out.println(mainActions.menuHeaderUsername().getAttribute("textContent") + " successfully signed-in");
         
         
 

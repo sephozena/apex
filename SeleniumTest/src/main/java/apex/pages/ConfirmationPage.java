@@ -14,7 +14,7 @@ public class ConfirmationPage extends BasePageObject<ConfirmationPage>{
 	}
 	
 	@FindBy(how = How.XPATH, using = "//*[@id='checkout-app']//button[contains(.,'Continue Shopping')]")
-	public WebElement proceedToShopping;
+	private WebElement proceedToShopping;
 
 	
 	

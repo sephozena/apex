@@ -59,16 +59,16 @@ public class OrderManagement extends BaseClass{
      * adds dynamic item to cart
      */
     public void addPhoneToCart() {
-    	System.out.println(mainPage.lblCloseCartQty.getAttribute("textContent"));
-    	String oldCartQty = mainPage.lblCloseCartQty.getAttribute("textContent");
+    	System.out.println(mainActions.closeCartQty().getAttribute("textContent"));
+    	String oldCartQty = mainActions.closeCartQty().getAttribute("textContent");
     	mainActions.clickDynamicAddButton(1);
     	
-    	driverUtils.waitForElementToBeVisible(mainPage.lblOpenCartQty, 5);
+    	driverUtils.waitForElementToBeVisible(mainActions.openCartQty(), 5);
 //    	waitForElementToBeVisible(mainPage.lblOpenCartQty, 5);
-    	String newCartQty = mainPage.lblOpenCartQty.getAttribute("textContent");
+    	String newCartQty = mainActions.openCartQty().getAttribute("textContent");
     	
     	assertThat(Integer.parseInt(newCartQty)).describedAs("Qty did not increase").isEqualTo((Integer.parseInt(oldCartQty)+1));
-    	System.out.println(mainPage.lblOpenCartQty.getAttribute("textContent") + " item has been added to the cart");
+    	System.out.println(mainActions.openCartQty().getAttribute("textContent") + " item has been added to the cart");
     }
     
     /*
@@ -77,7 +77,7 @@ public class OrderManagement extends BaseClass{
     public void proceedToCheckout() {
     	mainActions.proceedToCheckout();
     	driverUtils.pause(3);
-    	assertThat(checkoutPage.frmCheckout.isDisplayed()).describedAs("Checkout form is NOT displayed in a not signed-in user!").isTrue();
+    	assertThat(checkoutActions.frmCheckout().isDisplayed()).describedAs("Checkout form is NOT displayed in a not signed-in user!").isTrue();
     	System.out.println("Checkout form is displayed in a not signed-in user!");
     }
     
@@ -85,7 +85,7 @@ public class OrderManagement extends BaseClass{
      * verify if user is not signed-in
      */
     public void verifySignedOutUser() {
-    	assertThat(mainPage.btnSignIn.isDisplayed()).describedAs("Signin button is missing").isTrue();
+    	assertThat(mainActions.signIn().isDisplayed()).describedAs("Signin button is missing").isTrue();
     	System.out.println("User is currently logged out");
     }
     
@@ -103,31 +103,31 @@ public class OrderManagement extends BaseClass{
     
     
     public void addMultiplePhoneToCartWithQuantities(int newItemQty) {
-    	System.out.println(mainPage.lblCloseCartQty.getAttribute("textContent"));
-    	String oldCartQty = mainPage.lblCloseCartQty.getAttribute("textContent");
+    	System.out.println(mainActions.closeCartQty().getAttribute("textContent"));
+    	String oldCartQty = mainActions.closeCartQty().getAttribute("textContent");
     	mainActions.clickDynamicAddButton(1);
     	mainActions.clickDynamicAddButton(2);
     	mainActions.clickDynamicAddButton(3);
     	
-    	int itemCount = mainPage.openCartItems.size();
+    	int itemCount = mainActions.openCartItems().size();
     	System.out.println("item list count inside the cart: "+ itemCount);
     	
-    	for(int i=0; i<mainPage.openCartItems.size(); i++) {
-    		mainPage.btnOpenCartIncreaseQty.get(i).click();
+    	for(int i=0; i<mainActions.openCartItems().size(); i++) {
+    		mainActions.openCartIncreaseQty().get(i).click();
     	}
     	
-    	driverUtils.waitForElementToBeVisible(mainPage.lblOpenCartQty, 3);
+    	driverUtils.waitForElementToBeVisible(mainActions.openCartQty(), 3);
 //    	waitForElementToBeVisible(mainPage.lblOpenCartQty, 3);
-    	String newCartQty = mainPage.lblOpenCartQty.getAttribute("textContent");
+    	String newCartQty = mainActions.openCartQty().getAttribute("textContent");
     	
     	assertThat(Integer.parseInt(newCartQty)).describedAs("Qty did not increase").isEqualTo((Integer.parseInt(oldCartQty)+newItemQty));
-    	System.out.println(mainPage.lblOpenCartQty.getAttribute("textContent") + " items has been added to the cart");
+    	System.out.println(mainActions.openCartQty().getAttribute("textContent") + " items has been added to the cart");
     }    
     
     
     public void verifyCartSubTotal(String subTotal) {
-    	assertThat(mainPage.lblOpenCartSubTotalPrice.getAttribute("innerText")).describedAs("Subtotal doesnt match").isEqualTo(subTotal);
-    	System.out.println("the sub total is: " + mainPage.lblOpenCartSubTotalPrice.getAttribute("innerText"));
+    	assertThat(mainActions.openCartSubtotalPrice().getAttribute("innerText")).describedAs("Subtotal doesnt match").isEqualTo(subTotal);
+    	System.out.println("the sub total is: " + mainActions.openCartSubtotalPrice().getAttribute("innerText"));
     }
     
     public void navigateToOrdersPage() {
@@ -145,14 +145,14 @@ public class OrderManagement extends BaseClass{
     
     public void addItemToFavourites() {
     	mainActions.addItemToFavourites();
-    	assertThat(mainPage.shelfItemFavourite.getAttribute("class").contains("clicked")).describedAs("The item is not added on favourites!").isTrue();
+    	assertThat(mainActions.shelfItemFavourite().getAttribute("class").contains("clicked")).describedAs("The item is not added on favourites!").isTrue();
     	System.out.println("The Item has been added to favourites!");
     	
     }
     
     public void navigateToFavouritesPage() {
     	mainActions.clickFavourites();
-     	assertThat(mainPage.shelfItemFavourite.getAttribute("class").contains("clicked")).describedAs("No item in the favourites!").isTrue();
+     	assertThat(mainActions.shelfItemFavourite().getAttribute("class").contains("clicked")).describedAs("No item in the favourites!").isTrue();
      	System.out.println("This item is on your favourites!");
     }
     

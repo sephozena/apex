@@ -17,28 +17,28 @@ public class CheckoutPage extends BasePageObject<CheckoutPage> {
 	}
 
 	@FindBy(how = How.ID, using = "firstNameInput")
-	public WebElement inputFirstName;
+	private WebElement inputFirstName;
 	
 	@FindBy(how = How.ID, using = "lastNameInput")
-	public WebElement inputLastName;
+	private WebElement inputLastName;
 
 	@FindBy(how = How.ID, using = "addressLine1Input")
-	public WebElement inputAddress;
+	private WebElement inputAddress;
 	
 	@FindBy(how = How.ID, using = "provinceInput")
-	public WebElement inputProvince;
+	private WebElement inputProvince;
 	
 	@FindBy(how = How.ID, using = "postCodeInput")
-	public WebElement inputPostalCode;
+	private WebElement inputPostalCode;
 	
 	@FindBy(how = How.ID, using = "checkout-shipping-continue")
-	public WebElement btnSubmit;
+	private WebElement btnSubmit;
 	
 	@FindBy(how = How.XPATH, using = "//*[@id='checkout-app']//div[@class='layout-main']")
-	public WebElement frmCheckout;
+	private WebElement frmCheckout;
 	
 	@FindBy(how = How.XPATH, using = "//*[@id='checkout-app']//article[@class='cart optimizedCheckout-orderSummary']")
-	public WebElement frmOrderSummary;
+	private WebElement frmOrderSummary;
 	
 	
 	@FindBy(how = How.XPATH, using = "//header/following-sibling::section//ul[@class='productList']/li//div[contains(text(),'$')]")
@@ -46,7 +46,7 @@ public class CheckoutPage extends BasePageObject<CheckoutPage> {
 	
 	
 	@FindBy(how = How.XPATH, using = "//header/following-sibling::section[2]")
-	public WebElement orderSummaryTotalPrice;
+	private WebElement orderSummaryTotalPrice;
 
 	public class CheckoutActions{
 		
@@ -97,6 +97,14 @@ public class CheckoutPage extends BasePageObject<CheckoutPage> {
 	    	// Print the total
 	    	System.out.println("Total Price: " + total);	
 	    	return total;
+	    }
+	    
+	    public WebElement orderSummaryTotalPrice() {
+	    	return orderSummaryTotalPrice;
+	    }
+	    
+	    public WebElement frmCheckout() {
+	    	return frmCheckout;
 	    }
 
 	}

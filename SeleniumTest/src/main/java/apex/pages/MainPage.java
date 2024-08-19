@@ -18,79 +18,79 @@ public class MainPage extends BasePageObject<MainPage>{
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[@id='offers']")
-	public WebElement btnMenuHeaderOffers;
+	private WebElement btnMenuHeaderOffers;
 
 	@FindBy(how = How.XPATH, using = "//a[@id='orders']")
-	public WebElement btnMenuHeaderOrders;
+	private WebElement btnMenuHeaderOrders;
 
 	@FindBy(how = How.XPATH, using = "//a[@id='favourites']")
-	public WebElement btnMenuHeaderFavourites;
+	private WebElement btnMenuHeaderFavourites;
 	
 	@FindBy(how = How.XPATH, using = "//span[@class='username']")
-	public WebElement btnMenuHeaderUsername;
+	private WebElement btnMenuHeaderUsername;
 	
 	@FindBy(how = How.XPATH, using = "//span[@id='logout']")
-	public WebElement btnMenuHeaderLogout;
+	private WebElement btnMenuHeaderLogout;
 	
 	@FindBy(how = How.XPATH, using = "//span[@id='logout']")
-	public WebElement btnOpenCart;
+	private WebElement btnOpenCart;
 	
 	@FindBy(how = How.XPATH, using = "//div[@class='float-cart__close-btn']")
-	public WebElement btnCloseCart;
+	private WebElement btnCloseCart;
 	
 	@FindBy(how = How.XPATH, using = "(//div[@class='float-cart']//span[contains(@class,'quantity')])[1]")
-	public WebElement lblCloseCartQty;
+	private WebElement lblCloseCartQty;
 	
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'float-cart--open')]//span[@class='bag__quantity']")
-	public WebElement lblOpenCartQty;	
+	private WebElement lblOpenCartQty;	
 	
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'float-cart--open')]//div[@class='shelf-item']")
-	public List<WebElement> openCartItems;
+	private List<WebElement> openCartItems;
 	
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'float-cart--open')]//div[@class='shelf-item__del']")
-	public WebElement btnOpenCartDeleteItem;
+	private WebElement btnOpenCartDeleteItem;
 
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'float-cart--open')]//div[@class='shelf-item']//div[@class='shelf-item__price']")
-	public WebElement lblOpenCartItemPrice;
+	private WebElement lblOpenCartItemPrice;
 	
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'float-cart--open')]//div[@class='shelf-item']//button[@class='change-product-button'][1]")
-	public WebElement btnOpenCartDecreaseQty;
+	private WebElement btnOpenCartDecreaseQty;
 	
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'float-cart--open')]//div[@class='shelf-item']//button[@class='change-product-button'][2]")
-	public List<WebElement> btnOpenCartIncreaseQty;
+	private List<WebElement> btnOpenCartIncreaseQty;
 	
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'float-cart--open')]//p[@class='sub-price__val']")
-	public WebElement lblOpenCartSubTotalPrice;
+	private WebElement lblOpenCartSubTotalPrice;
 	
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'float-cart--open')]//div[@class='buy-btn']")
-	public WebElement btnOpenCartCheckout;
+	private WebElement btnOpenCartCheckout;
 	
 	@FindBy(how = How.XPATH, using = "//*[@class='shelf-container-header']")
-	public WebElement itemHeader;
+	private WebElement itemHeader;
 	
 	@FindBy(how = How.XPATH, using = "//*[@class='shelf-container-header']//div[@class='sort']//select//option[@value='%s']")
-	public WebElement orderByFilter;
+	private WebElement orderByFilter;
 	
 	@FindBy(how = How.XPATH, using = "//div[@class='filters']")
-	public WebElement vendorFilter;
+	private WebElement vendorFilter;
 
 	@FindBy(how = How.XPATH, using = "//input[1]//following-sibling::span[contains(text(),'%s')")
-	public WebElement availableVendor;
+	private WebElement availableVendor;
 	
 	@FindBy(how = How.XPATH, using = "//div[@class='shelf-container']//div[@class='shelf-item']")
-	public WebElement availablePhones;
+	private WebElement availablePhones;
 	
 	@FindBy(how = How.XPATH, using = "	//div[@class='shelf-container']//div[@class='shelf-item']//div[@class='shelf-item__buy-btn']")
-	public WebElement availablePhonesAddToCart;
+	private WebElement availablePhonesAddToCart;
 	
 	@FindBy(how = How.XPATH, using = "	//div[@class='shelf-container']//div[@class='shelf-item']//div[@class='shelf-item__buy-btn']['%s']")
-	public WebElement availablePhonesAddToCartDynamic;
+	private WebElement availablePhonesAddToCartDynamic;
 	
 	@FindBy(how = How.XPATH, using = "(//div[@class='shelf-container']//div[@class='shelf-item']//button)[1]")
-	public WebElement shelfItemFavourite;
+	private WebElement shelfItemFavourite;
 	
 	@FindBy(how = How.ID, using = "signin")
-	public WebElement btnSignIn;
+	private WebElement btnSignIn;
 	
 	
 	
@@ -142,6 +142,40 @@ public class MainPage extends BasePageObject<MainPage>{
         public void clickFavourites() {
         	webDriverUtils.click(btnMenuHeaderFavourites);
         }
+        
+        public WebElement menuHeaderUsername() {
+        	return btnMenuHeaderUsername;
+        }
+        
+        public WebElement closeCartQty() {
+        	return lblCloseCartQty;
+        }
+        
+        
+        public WebElement openCartQty() {
+        	return lblOpenCartQty;
+        }
+        
+        public List<WebElement> openCartItems(){
+        	return openCartItems;
+        }
+        
+        public List<WebElement> openCartIncreaseQty(){
+        	return btnOpenCartIncreaseQty;
+        }
+        
+        public WebElement openCartSubtotalPrice(){
+        	return lblOpenCartSubTotalPrice;
+        }
+        
+        public WebElement shelfItemFavourite(){
+        	return shelfItemFavourite;
+        }
+        
+        public WebElement signIn(){
+        	return btnSignIn;
+        }   
+        
 
 	}
 }

@@ -36,7 +36,7 @@ public class PaymentManagement extends BaseClass {
     public void getTotalAmount() {
     	int totalAmount = checkoutActions.getTotalAmount();    	
     	
-    	String orderSummaryTotalAmountString = checkoutPage.orderSummaryTotalPrice.getAttribute("innerText").replaceAll("[^\\d.]", "").trim();
+    	String orderSummaryTotalAmountString = checkoutActions.orderSummaryTotalPrice().getAttribute("innerText").replaceAll("[^\\d.]", "").trim();
     	int orderSummaryTotalAmount = (int)Double.parseDouble(orderSummaryTotalAmountString);
 	
     	assertThat(orderSummaryTotalAmount).describedAs("Total amount doesnt match!").isEqualTo(totalAmount);

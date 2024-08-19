@@ -19,16 +19,16 @@ public class FavouritesPage extends BasePageObject<FavouritesPage>{
 	
 	
 	@FindBy(how = How.XPATH, using = "//div[@class='shelf-item']")
-	public List<WebElement> shelfItem;
+	private List<WebElement> shelfItem;
 	
 	@FindBy(how = How.XPATH, using = "//p[@class='shelf-item__title']")
-	public WebElement lblFavouriteName;
+	private WebElement lblFavouriteName;
 	
 	@FindBy(how = How.XPATH, using = "//div[@class='shelf-item__price']//div[@class='val']")
-	public WebElement lblFavouritePrice;
+	private WebElement lblFavouritePrice;
 	
     // Utility method to get the "Add to Cart" button for a specific index
-    public WebElement dynamicShelfItemName(int index) {
+	private WebElement dynamicShelfItemName(int index) {
         String dynamicXpath = String.format("(//p[@class='shelf-item__title'])['%s']", index);
         return driver.findElement(By.xpath(dynamicXpath));
     }
