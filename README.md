@@ -1,1 +1,4 @@
-test automation framework using  java, selenium, POM design pattern, DDD test.
+**Test automation framework using**:
+Tech: Java, Selenium, TestNG, AssertJ
+Pattern: Page Object Model design pattern, Page Factory pattern,  
+Methodology: Data-Driven Development
