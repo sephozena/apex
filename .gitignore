@@ -1,3 +1,4 @@
 .metadata
 .idea
 /SeleniumTest/test-output/
+/SeleniumTest/target/
