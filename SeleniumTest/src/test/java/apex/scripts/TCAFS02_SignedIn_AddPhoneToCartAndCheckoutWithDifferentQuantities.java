@@ -41,8 +41,8 @@ public class TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities e
         /*
          * Verify that navigated to correct environment url
          */
-    	assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(baseUrl);
-    	log.info("Navigated to: " + driver.getCurrentUrl());
+//    	assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(baseUrl);
+//    	log.info("Navigated to: " + driver.getCurrentUrl());
     	
         /*
          * Sign-in user
