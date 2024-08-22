@@ -2,3 +2,5 @@
 .idea
 SeleniumTest/test-output/
 SeleniumTest/target/
+SeleniumTest/Screenshots/TCAFS04_SignedIn_ViewOrderHistory_PASS.png
+*.png

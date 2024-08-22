@@ -11,6 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
@@ -21,6 +22,9 @@ import apex.utils.ExtentReportManager;
 import apex.utils.ScreenshotUtils;
 import apex.utils.ThreadUtils;
 
+
+
+@Listeners(apex.utils.TestListener.class)
 public class BaseClass {
     protected WebDriver driver;
     protected static final Logger log = LogManager.getLogger(BaseClass.class);
