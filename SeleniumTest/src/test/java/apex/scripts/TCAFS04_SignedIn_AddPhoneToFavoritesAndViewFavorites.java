@@ -17,13 +17,13 @@ public class TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites extends BaseCl
 
     @BeforeTest
     public void setUpTestData() {
-    	
     	/*
     	 * load Test Data 
     	 */
 	    String propertiesFilePath = "resources/data/TCAFS04/TCAFS04.properties";
 	    testData = new PropertiesDataFile(propertiesFilePath);
     }
+    
     @Test(groups = {"signed-in"})
     @Parameters({"browser"})
     public void TCAFS04_SignedIn_ViewOrderHistory() {

@@ -175,7 +175,6 @@ public class MainPage extends BasePageObject<MainPage>{
         public WebElement signIn(){
         	return btnSignIn;
         }   
-        
 
 	}
 }
