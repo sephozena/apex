@@ -37,9 +37,7 @@ public class BaseClass {
     @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})
     public void launchBrowser(@Optional("chrome") String browserName) {
-    	
-        // Initialize Log4j configuration
-        driver = initializeDriver(browserName);
+    	driver = initializeDriver(browserName);
         
 
         ThreadUtils.setDriverRef(driver);
@@ -48,10 +46,9 @@ public class BaseClass {
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
-        String baseUrl = ConfigManager.getProperty("baseUrl");
-        driver.get(baseUrl);
-        log.info("Setting up the base url: " + baseUrl);
+        
+        
+        log.info("Setting up the base url: " + ConfigManager.getProperty("baseUrl"));
     }
 
     @AfterClass(alwaysRun = true)
