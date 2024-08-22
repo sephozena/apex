@@ -17,30 +17,33 @@ import apex.utils.ThreadUtils;
 
 public class BaseClass {
     protected WebDriver driver;
-    private static final Logger log = LogManager.getLogger();
+    protected static final Logger log = LogManager.getLogger(BaseClass.class);
+
        
     
     private WebDriver initializeDriver(String browser) {
         if ("chrome".equals(browser)) {
-        	System.out.println("Initializing WebDriver for browser: " + browser);
-        	log.info("basdlasdlasdl");
-            return new ChromeDriver();
+        	System.out.println("Initializing WebDriver for: " + browser);
+        	log.info("Initializing WebDriver for browser: " + browser);
+        	return new ChromeDriver();
             
         } else if ("firefox".equals(browser)) {
-        	System.out.println("Initializing WebDriver for browser: " + browser);
-        	log.info("basdlasdlasdl");
-
+        	log.info("Initializing WebDriver for: " + browser);
             return new FirefoxDriver();
         }
         throw new IllegalArgumentException("Invalid browser name: " + browser);
     }
-    
+    	
     @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})
     public void launchBrowser(@Optional("chrome") String browserName) {
+    	
+        // Initialize Log4j configuration
         driver = initializeDriver(browserName);
+        
+
         ThreadUtils.setDriverRef(driver);
-		Logger log = ThreadUtils.getLogger();
+        ThreadUtils.setLogger(log);
 
 
         driver.manage().window().maximize();
@@ -48,6 +51,7 @@ public class BaseClass {
 
         String baseUrl = ConfigManager.getProperty("baseUrl");
         driver.get(baseUrl);
+        log.info("Setting up the base url: " + baseUrl);
     }
 
     @AfterClass(alwaysRun = true)

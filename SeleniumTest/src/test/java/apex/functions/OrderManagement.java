@@ -126,7 +126,7 @@ public class OrderManagement extends BaseClass{
     
     
     public void verifyCartSubTotal(String subTotal) {
-    	assertThat(mainActions.openCartSubtotalPrice().getAttribute("innerText")).describedAs("Subtotal doesnt match").isEqualTo(subTotal);
+    	assertThat(mainActions.openCartSubtotalPrice().getAttribute("innerText")).describedAs("Subtotal doesnt match" + subTotal).isEqualTo(subTotal);
     	System.out.println("the sub total is: " + mainActions.openCartSubtotalPrice().getAttribute("innerText"));
     }
     

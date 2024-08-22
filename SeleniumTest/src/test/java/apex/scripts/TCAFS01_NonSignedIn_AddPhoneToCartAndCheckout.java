@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.apache.logging.log4j.Logger;
 
 import apex.basepage.BaseClass;
 import apex.functions.OrderManagement;
@@ -35,7 +36,7 @@ public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
          * Verify that navigated to correct environment url
          */
     	assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(baseUrl);
-    	System.out.println("Navigated to: " + driver.getCurrentUrl());
+    	log.info("Navigated to: " + driver.getCurrentUrl());
     	
         /*
          * Add item to cart and proceed to checkout

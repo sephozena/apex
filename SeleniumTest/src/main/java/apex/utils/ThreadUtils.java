@@ -1,6 +1,7 @@
 package apex.utils;
 
 import org.openqa.selenium.WebDriver;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public final class ThreadUtils {
@@ -24,28 +25,19 @@ public final class ThreadUtils {
     public static void setDriverRef(WebDriver driver) {
         ThreadUtils.driver.set(driver);
     }
-
-    // Public method to get Logger instance
-//    public static Logger getLogger() {
-//        Logger loggerRef = logger.get();
-//        if (loggerRef == null) {
-//            throw new IllegalStateException("Logger instance has not been set for this thread.");
-//        }
-//        return loggerRef;
-//    }
-//
-//    // Public method to set Logger instance
-//    public static void setLogger(Logger logger) {
-//        ThreadUtils.logger.set(logger);
-//    }
     
     public static synchronized Logger getLogger() {
+        Logger loggerRef = logger.get();
+        if (loggerRef == null) {
+        	loggerRef = LogManager.getLogger("DefaultLogger");
+            logger.set(loggerRef);
+            System.out.println("Logger initialized: " + loggerRef.getName()); // Debug output
+
+        }
         return logger.get();
       }
-      
-
-      
-      public static synchronized void setLogger(Logger loggerParam) {
+    
+    public static synchronized void setLogger(Logger loggerParam) {
         logger.set(loggerParam);
       }
     
@@ -62,6 +54,8 @@ public final class ThreadUtils {
     public static void setDataFolder(String dataFolderParm) {
         ThreadUtils.dataFolder.set(dataFolderParm);
     }
+    
+
 
 
 }
