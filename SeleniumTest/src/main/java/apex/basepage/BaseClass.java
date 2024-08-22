@@ -48,7 +48,10 @@ public class BaseClass {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         
         
-        log.info("Setting up the base url: " + ConfigManager.getProperty("baseUrl"));
+        String baseUrl = ConfigManager.getProperty("baseUrl");
+        driver.get(baseUrl);
+        log.info("Setting up the base url: " + baseUrl);
+        
     }
 
     @AfterClass(alwaysRun = true)
