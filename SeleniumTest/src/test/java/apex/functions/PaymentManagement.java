@@ -40,7 +40,7 @@ public class PaymentManagement extends BaseClass {
     	int orderSummaryTotalAmount = (int)Double.parseDouble(orderSummaryTotalAmountString);
 	
     	assertThat(orderSummaryTotalAmount).describedAs("Total amount doesnt match!").isEqualTo(totalAmount);
-    	System.out.println("The total amount is correct! "+ orderSummaryTotalAmount);
+    	log.info("The total amount is correct! "+ orderSummaryTotalAmount);
     }
     
     public void continueShopping() {

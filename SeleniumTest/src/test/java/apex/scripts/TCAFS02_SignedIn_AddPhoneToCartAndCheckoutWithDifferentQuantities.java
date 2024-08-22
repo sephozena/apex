@@ -36,16 +36,13 @@ public class TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities e
 	@Test(groups = {"signed-in"})
 	@Parameters({"browser"})
 	public void TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities() {
-	    Logger log = log();
-
     	String baseUrl = ConfigManager.getProperty("baseUrl");
     	
         /*
          * Verify that navigated to correct environment url
          */
     	assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(baseUrl);
-    	System.out.println("Navigated to: " + driver.getCurrentUrl());
-    	log.info("teest");
+    	log.info("Navigated to: " + driver.getCurrentUrl());
     	
         /*
          * Sign-in user
@@ -58,7 +55,7 @@ public class TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities e
         signInManagement.enterValidInfoAndLogin();
 
         orderManagement.addMultiplePhoneToCartWithQuantities(Integer.parseInt(testData.get("verifyNewItemQty")));
-        System.out.println(testData.get("subTotal") + " this is the subtotal from test data");
+        log.info(testData.get("subTotal") + " this is the subtotal from test data");
         orderManagement.verifyCartSubTotal(testData.get("subTotal"));
         
         
@@ -70,7 +67,7 @@ public class TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities e
         testData.set("newTestData", "this is my new test data1 data2 data3 data4");
         String newTestData = testData.get("newTestData");
         String[] newTestDataIndex = newTestData.split(";");
-        System.out.println(" @@@@@@@@@@ sample text lorem ipsum" + " there are " +newTestDataIndex.length +" test datas available. getting data on index(2) text lorem ipsum "+  newTestDataIndex[0]);
+        log.info(" @@@@@@@@@@ " + " there are " +newTestDataIndex.length +" test datas available. getting data on index(2) "+  newTestDataIndex[0]);
         
         /*
          * proceed on checkout order and do calculations

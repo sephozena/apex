@@ -34,7 +34,7 @@ public class TCAFS03_SignedIn_ViewOrderHistory extends BaseClass{
          * Verify that navigated to correct environment url
          */
     	assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(baseUrl);
-    	System.out.println("Navigated to: " + driver.getCurrentUrl());
+    	log.info("Navigated to: " + driver.getCurrentUrl());
     	
         /*
          * proceed to login

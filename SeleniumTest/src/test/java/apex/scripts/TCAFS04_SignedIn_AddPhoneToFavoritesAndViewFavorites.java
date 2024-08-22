@@ -33,7 +33,7 @@ public class TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites extends BaseCl
          * Verify that navigated to correct environment url
          */
     	assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(baseUrl);
-    	System.out.println("Navigated to: " + driver.getCurrentUrl());
+    	log.info("Navigated to: " + driver.getCurrentUrl());
     	
         /*
          * proceed to login
