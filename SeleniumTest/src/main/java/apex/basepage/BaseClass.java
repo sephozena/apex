@@ -92,4 +92,9 @@ public class BaseClass {
 //        // Explicitly fail the test to ensure it is recorded as failed in the TestListener
 //        throw new AssertionError("Test failed: " + screenshotName);
 //    }
+	
+    // New method to access ScreenshotUtils.logWithScreenshot
+    public void logWithScreenshot(String message, Status status) {
+        ScreenshotUtils.logWithScreenshot(driver, message, status);
+    }
 }
