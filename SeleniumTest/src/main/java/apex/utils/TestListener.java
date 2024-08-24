@@ -29,7 +29,7 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		logTestResult(result, Status.FAIL, "Success");
+		logTestResult(result, Status.PASS, "Success");
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		logTestResult(result, Status.FAIL, "Skipped");
+		logTestResult(result, Status.SKIP, "Skipped");
 	}
 
 	@Override
