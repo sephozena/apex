@@ -35,7 +35,7 @@ public class TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities e
 	
 	@Test(groups = {"signed-in"})
 	@Parameters({"browser"})
-	public void TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities() {
+	public void TCAFS02() {
     	String baseUrl = ConfigManager.getProperty("baseUrl");
     	
         /*

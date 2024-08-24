@@ -26,7 +26,7 @@ public class TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites extends BaseCl
     
     @Test(groups = {"signed-in"})
     @Parameters({"browser"})
-    public void TCAFS04_SignedIn_ViewOrderHistory() {
+    public void TCAFS04() {
     	String baseUrl = ConfigManager.getProperty("baseUrl");
     	
         /*

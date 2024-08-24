@@ -27,7 +27,7 @@ public class TCAFS03_SignedIn_ViewOrderHistory extends BaseClass{
     }
     @Test(groups = {"signed-in"})
     @Parameters({"browser"})
-    public void TCAFS03_SignedIn_ViewOrderHistory() {
+    public void TCAFS03() {
     	String baseUrl = ConfigManager.getProperty("baseUrl");
     	
         /*
