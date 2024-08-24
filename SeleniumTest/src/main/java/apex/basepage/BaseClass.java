@@ -22,72 +22,74 @@ import apex.utils.ExtentReportManager;
 import apex.utils.ScreenshotUtils;
 import apex.utils.ThreadUtils;
 
-
-
 @Listeners(apex.utils.TestListener.class)
 public class BaseClass {
-    protected WebDriver driver;
-    protected static final Logger log = LogManager.getLogger(BaseClass.class);
+	protected WebDriver driver;
+	protected static final Logger log = LogManager.getLogger(BaseClass.class);
 
-    private WebDriver initializeDriver(String browser) {
-        if ("chrome".equals(browser)) {
-            log.info("Initializing WebDriver for: " + browser);
-            return new ChromeDriver();
-        } else if ("firefox".equals(browser)) {
-            log.info("Initializing WebDriver for: " + browser);
-            return new FirefoxDriver();
-        }
-        throw new IllegalArgumentException("Invalid browser name: " + browser);
-    }
+	private WebDriver initializeDriver(String browser) {
 
-    @BeforeClass(alwaysRun = true)
-    @Parameters({"browser"})
-    public void launchBrowser(@Optional("chrome") String browserName) {
-        driver = initializeDriver(browserName);
-        ThreadUtils.setDriverRef(driver);
-        ThreadUtils.setLogger(log);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        
-        
-        String baseUrl = ConfigManager.getProperty("baseUrl");
-        driver.get(baseUrl);
-        log.info("Setting up the base url: " + baseUrl);
+		switch (browser.toLowerCase()) {
 
-    }
+		case "chrome":
+			log.info("Initializing WebDriver for: " + browser);
+			return new ChromeDriver();
+		case "firefox":
+			log.info("Initializing WebDriver for: " + browser);
+			return new FirefoxDriver();
+		default:
+			throw new IllegalArgumentException("Invalid browser name: " + browser);
+		}
+	}
 
-    @AfterClass(alwaysRun = true)
-    public void closeBrowser() {
-        if (driver != null) {
-            driver.quit();
-            log.info("Browser closed.");
-        }
-    }
-    
-    @BeforeSuite
-    public void setUpReport() {
-        // Initialize the Extent Report before any test suite runs
-        ExtentReportManager.initializeReport("test-output/extent-report.html");
-    }
-    
-    @AfterSuite
-    public void tearDownReport() {
-        // Flush the Extent Report after all tests in the suite have run
-        ExtentReportManager.flushReport();
-    }
-    
-    public static Logger log() {
-        return ThreadUtils.getLogger();
-    }
+	@BeforeClass(alwaysRun = true)
+	@Parameters({ "browser" })
+	public void launchBrowser(@Optional("chrome") String browser) {
+		driver = initializeDriver(browser);
+		ThreadUtils.setDriverRef(driver);
+		ThreadUtils.setLogger(log);
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
-    public void captureAndAttachScreenshot(String screenshotName) {
-        ScreenshotUtils.captureAndAttachScreenshot(driver, screenshotName);
-    }
+		String baseUrl = ConfigManager.getProperty("baseUrl");
+		driver.get(baseUrl);
+		log.info("Setting up the base url: " + baseUrl);
 
-    public void handleTestFailure(String screenshotName) {
-        log.error("Test failed: " + screenshotName);
-        ScreenshotUtils.captureAndAttachScreenshot(driver, screenshotName);
-        ExtentReportManager.getTest().log(Status.FAIL, "Test failed: " + screenshotName);
-    }
+	}
 
+	@AfterClass(alwaysRun = true)
+	public void closeBrowser() {
+		if (driver != null) {
+			driver.quit();
+			log.info("Browser closed.");
+		}
+	}
+
+	@BeforeSuite
+	public void setUpReport() {
+		// Initialize the Extent Report before any test suite runs
+		ExtentReportManager.initializeReport("test-output/extent-report.html");
+	}
+
+	@AfterSuite
+	public void tearDownReport() {
+		// Flush the Extent Report after all tests in the suite have run
+		ExtentReportManager.flushReport();
+	}
+
+	public static Logger log() {
+		return ThreadUtils.getLogger();
+	}
+
+	public void captureAndAttachScreenshot(String screenshotName) {
+		ScreenshotUtils.captureAndAttachScreenshot(driver, screenshotName);
+	}
+//
+//    public void handleTestFailure(String screenshotName) {
+//        log.error("Test failed: " + screenshotName);
+//        captureAndAttachScreenshot(screenshotName);
+//        ExtentReportManager.getTest().log(Status.FAIL, "Test failed: " + screenshotName);
+//        // Explicitly fail the test to ensure it is recorded as failed in the TestListener
+//        throw new AssertionError("Test failed: " + screenshotName);
+//    }
 }

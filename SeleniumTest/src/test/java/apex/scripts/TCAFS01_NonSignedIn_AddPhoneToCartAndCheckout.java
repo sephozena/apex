@@ -6,12 +6,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
+
 import apex.basepage.BaseClass;
 import apex.functions.OrderManagement;
 import apex.functions.PaymentManagement;
 import apex.utils.ConfigManager;
-import apex.utils.ExtentReportManager;
 import apex.utils.PropertiesDataFile;
+import apex.utils.ScreenshotUtils;
 
 public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
     private PropertiesDataFile testData;
@@ -25,15 +27,13 @@ public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
     @Test(groups = {"non-signedin"})
     @Parameters({"browser"})
     public void TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout() {
-//        ExtentReportManager.createTest("TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout");
-
-        try {
             String baseUrl = ConfigManager.getProperty("baseUrl");
             assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(baseUrl);
             log.info("Navigated to: " + driver.getCurrentUrl());
 
             OrderManagement orderManagement = new OrderManagement(driver);
             orderManagement.addPhoneToCart();
+            ScreenshotUtils.logWithScreenshot(driver, "phone successfully added to cart", Status.INFO);
             orderManagement.proceedToCheckout();
 
             PaymentManagement paymentManagement = new PaymentManagement(driver);
@@ -47,8 +47,5 @@ public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
             
             paymentManagement.continueShopping();
             log.info("Successfully completed the checkout process.");
-        } catch (Exception e) {
-            handleTestFailure("TCAFS01_Failure");
-        }
     }
 }

@@ -3,16 +3,18 @@ package apex.utils;
 import org.openqa.selenium.WebDriver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.aventstack.extentreports.ExtentTest;
 
 public final class ThreadUtils {
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    private static ThreadLocal<Logger> logger = new ThreadLocal<>();
-    private static ThreadLocal<String> dataFolder = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<Logger> logger = new ThreadLocal<>();
+    private static final ThreadLocal<String> dataFolder = new ThreadLocal<>();
+    private static final ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
     
     // Private constructor to prevent instantiation
     private ThreadUtils() {}
 
-    // Public method to get WebDriver instance
+    // WebDriver methods
     public static WebDriver getDriverRef() {
         WebDriver driverRef = driver.get();
         if (driverRef == null) {
@@ -21,27 +23,26 @@ public final class ThreadUtils {
         return driverRef;
     }
 
-    // Public method to set WebDriver instance
     public static void setDriverRef(WebDriver driver) {
         ThreadUtils.driver.set(driver);
     }
     
+    // Logger methods
     public static synchronized Logger getLogger() {
         Logger loggerRef = logger.get();
         if (loggerRef == null) {
-        	loggerRef = LogManager.getLogger("DefaultLogger");
+            loggerRef = LogManager.getLogger("DefaultLogger");
             logger.set(loggerRef);
             System.out.println("Logger initialized: " + loggerRef.getName()); // Debug output
-
         }
         return logger.get();
-      }
+    }
     
     public static synchronized void setLogger(Logger loggerParam) {
         logger.set(loggerParam);
-      }
+    }
     
-    // Public method to get Data Folder
+    // Data folder methods
     public static String getDataFolder() {
         String dataFolderRef = dataFolder.get();
         if (dataFolderRef == null) {
@@ -50,12 +51,16 @@ public final class ThreadUtils {
         return dataFolderRef;
     }
 
-    // Public method to set Data Folder
     public static void setDataFolder(String dataFolderParm) {
         ThreadUtils.dataFolder.set(dataFolderParm);
     }
-    
 
+    // ExtentTest methods
+    public static ExtentTest getExtentTest() {
+        return extentTest.get();
+    }
 
-
+    public static void setExtentTest(ExtentTest test) {
+        extentTest.set(test);
+    }
 }
