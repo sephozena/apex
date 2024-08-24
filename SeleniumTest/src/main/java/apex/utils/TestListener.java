@@ -23,7 +23,7 @@ public class TestListener implements ITestListener {
 	@Override
 	public void onTestStart(ITestResult result) {
 		String browser = result.getTestContext().getCurrentXmlTest().getParameter("browser");
-		ExtentTest test = ExtentReportManager.createTest(result.getMethod().getMethodName() + " [" + browser + "]");
+		ExtentTest test = ExtentReportManager.createTest("[" + browser + "] " + result.getMethod().getMethodName());
 		ThreadUtils.setExtentTest(test);
 	}
 
