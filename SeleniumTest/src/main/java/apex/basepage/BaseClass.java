@@ -45,6 +45,7 @@ public class BaseClass {
 	@BeforeClass(alwaysRun = true)
 	@Parameters({ "browser" })
 	public void launchBrowser(@Optional("chrome") String browser) {
+        ThreadUtils.setBrowserName(browser);  // Set the browser name in ThreadUtils
 		driver = initializeDriver(browser);
 		ThreadUtils.setDriverRef(driver);
 		ThreadUtils.setLogger(log);

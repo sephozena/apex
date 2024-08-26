@@ -10,6 +10,8 @@ public final class ThreadUtils {
     private static final ThreadLocal<Logger> logger = new ThreadLocal<>();
     private static final ThreadLocal<String> dataFolder = new ThreadLocal<>();
     private static final ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
+    private static ThreadLocal<String> browserName = new ThreadLocal<>();
+
     
     // Private constructor to prevent instantiation
     private ThreadUtils() {}
@@ -62,5 +64,13 @@ public final class ThreadUtils {
 
     public static void setExtentTest(ExtentTest test) {
         extentTest.set(test);
+    }
+    
+    public static void setBrowserName(String browser) {
+        browserName.set(browser);
+    }
+
+    public static String getBrowserName() {
+        return browserName.get();
     }
 }

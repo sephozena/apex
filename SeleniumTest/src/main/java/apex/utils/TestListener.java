@@ -14,16 +14,20 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onStart(ITestContext context) {
-        /*
-         * ExtentReportManager.initializeReport("test-output/extent-report.html");
-         * is handled in our BaseClass for cleaner code
-         */
+		/*
+		 * ExtentReportManager.initializeReport("test-output/extent-report.html"); is
+		 * handled in our BaseClass for cleaner code
+		 */
 	}
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		String browser = result.getTestContext().getCurrentXmlTest().getParameter("browser");
-		ExtentTest test = ExtentReportManager.createTest(result.getMethod().getMethodName() +" [" + browser + "] ");
+//		String browser = result.getTestContext().getCurrentXmlTest().getParameter("browser");
+        String browser = ThreadUtils.getBrowserName(); // Get browser from ThreadUtils
+		if (browser == null) {
+			browser = getBrowserFromResult(result); // Fallback to the original method
+		}
+		ExtentTest test = ExtentReportManager.createTest(result.getMethod().getMethodName() + " [" + browser + "] ");
 		ThreadUtils.setExtentTest(test);
 	}
 
@@ -45,8 +49,8 @@ public class TestListener implements ITestListener {
 	@Override
 	public void onFinish(ITestContext context) {
 		/*
-		 * ExtentReportManager.flushReport(); 
-		 * is handled in our BaseClass for cleaner code
+		 * ExtentReportManager.flushReport(); is handled in our BaseClass for cleaner
+		 * code
 		 */
 	}
 
@@ -65,7 +69,9 @@ public class TestListener implements ITestListener {
 
 	private void logTestResult(ITestResult result, Status status, String resultType) {
 		ExtentTest test = ThreadUtils.getExtentTest();
-		String browser = getBrowserFromResult(result);
+//		String browser = getBrowserFromResult(result);
+		String browser = ThreadUtils.getBrowserName(); 
+		
 		String screenshotPath = ScreenshotUtils.captureAndAttachScreenshot(ThreadUtils.getDriverRef(),
 				result.getMethod().getMethodName() + "_" + resultType);
 		String customErrorMessage = result.getThrowable() != null
@@ -73,7 +79,7 @@ public class TestListener implements ITestListener {
 				: "";
 
 		try {
-			test.log(status, "Test " + resultType + ": [ " + browser + " ] " + customErrorMessage,
+			test.log(status, "Test " + resultType + ": [" + browser + "] " + customErrorMessage,
 					MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,6 +88,9 @@ public class TestListener implements ITestListener {
 	}
 
 	private String getBrowserFromResult(ITestResult result) {
-		return result.getTestContext().getCurrentXmlTest().getParameter("browser");
+//		return result.getTestContext().getCurrentXmlTest().getParameter("browser");
+        String browser = result.getTestContext().getCurrentXmlTest().getParameter("browser");
+        return browser != null ? browser : "Unknown Browser";
+
 	}
 }
