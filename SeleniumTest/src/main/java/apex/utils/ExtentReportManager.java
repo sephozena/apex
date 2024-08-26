@@ -1,3 +1,7 @@
+/**
+ * @author SephOzena
+ * @param My First Test Automation Framework 
+ */
 package apex.utils;
 
 import com.aventstack.extentreports.ExtentReports;
