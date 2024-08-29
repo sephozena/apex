@@ -1,5 +1,8 @@
 .settings/
 .idea/
 *.class
+*.png
 /target/
 /test-output/
+/screenshots/
+
