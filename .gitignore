@@ -2,9 +2,8 @@
 .idea
 *.png
 *.class
-SeleniumTest/test-output/
-SeleniumTest/target/
-SeleniumTest/Screenshots/TCAFS04_SignedIn_ViewOrderHistory_PASS.png
+/SeleniumTest/test-output/
+/SeleniumTest/target/
 target/
 test-output/
-screenshots/
+/SeleniumTest/screenshots/
