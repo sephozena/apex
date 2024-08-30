@@ -100,7 +100,6 @@ public class BaseClass {
 	
     // New method to access ScreenshotUtils.logWithScreenshot
     public void logWithScreenshot(String message, Status status) {
-        ScreenshotUtils.logWithScreenshot(driver, message, status);
-        log.info("captured: " + message);
+         ScreenshotUtils.logWithScreenshot(driver, message, status);
     }
 }

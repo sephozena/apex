@@ -13,6 +13,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
+
 import apex.basepage.BaseClass;
 import apex.functions.OrderManagement;
 import apex.functions.PaymentManagement;
@@ -61,18 +63,8 @@ public class TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities e
         orderManagement.addMultiplePhoneToCartWithQuantities(Integer.parseInt(testData.get("verifyNewItemQty")));
         log.info(testData.get("subTotal") + " this is the subtotal from test data");
         orderManagement.verifyCartSubTotal(testData.get("subTotal"));
-        
-        
-        /*
-         * set new data 
-         * split the data and store in an string array
-         * retrieve specific data
-         */
-        testData.set("newTestData", "this is my new test data1 data2 data3 data4");
-        String newTestData = testData.get("newTestData");
-        String[] newTestDataIndex = newTestData.split(";");
-        log.info(" @@@@@@@@@@ " + " there are " +newTestDataIndex.length +" test datas available. getting data on index(2) "+  newTestDataIndex[0]);
-        
+        logWithScreenshot("Verify Subtotal", Status.INFO);
+                
         /*
          * proceed on checkout order and do calculations
          */

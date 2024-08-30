@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ScreenshotUtils {
 
-	private static final String SCREENSHOTS_DIR = System.getProperty("user.dir") + "/screenshots/";
+	private static final String SCREENSHOTS_DIR = "screenshots/";
 	
     private static String generateFilePath(String screenshotName) {
         String dateName = DateTimeFormatter.ofPattern("yyyyMMddHHmmss").format(LocalDateTime.now());
@@ -29,19 +29,29 @@ public class ScreenshotUtils {
 	public static String captureAndAttachScreenshot(WebDriver driver, String screenshotName) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);
-		String destination = generateFilePath(screenshotName);
+		String destination = generateFilePath(screenshotName.replaceAll(" ", "_"));
 		File finalDestination = new File(destination);
+		
+		File destinationDir = finalDestination.getParentFile();
+		if(!destinationDir.exists()) {
+			destinationDir.mkdir();
+		}
 		try {
 			FileUtils.copyFile(source, finalDestination);
 		} catch (IOException e) {
 			e.printStackTrace();
 			ThreadUtils.getLogger().error("Failed to capture screenshot: ", e.getMessage());
 		}
-		return destination;
+		ThreadUtils.getLogger().info("captured in: " + finalDestination);
+		return finalDestination.getAbsolutePath();
 	}
 
 	// Method to log a message and attach a screenshot on pass/fail
 	public static void logWithScreenshot(WebDriver driver, String message, Status status) {
+		if(status==null) {
+			status = status.INFO;
+			ThreadUtils.getLogger().info("Screenshot status is null. Setting Default: "+status);
+		}
 		String screenshotPath = captureAndAttachScreenshot(driver, message);
 		try {
 			ExtentReportManager.getTest().log(status, message,MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());

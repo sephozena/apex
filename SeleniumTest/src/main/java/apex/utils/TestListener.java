@@ -73,7 +73,6 @@ public class TestListener implements ITestListener {
 
 	private void logTestResult(ITestResult result, Status status, String resultType) {
 		ExtentTest test = ThreadUtils.getExtentTest();
-//		String browser = getBrowserFromResult(result);
 		String browser = ThreadUtils.getBrowserName(); 
 		
 		String screenshotPath = ScreenshotUtils.captureAndAttachScreenshot(ThreadUtils.getDriverRef(),

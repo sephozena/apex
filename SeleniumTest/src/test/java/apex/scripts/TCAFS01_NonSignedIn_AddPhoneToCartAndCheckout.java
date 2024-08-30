@@ -36,7 +36,7 @@ public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
 
             OrderManagement orderManagement = new OrderManagement(driver);
             orderManagement.addPhoneToCart();
-            logWithScreenshot("phone successfully added to cart", Status.INFO);
+            logWithScreenshot("phone successfully added to cart", null);
             orderManagement.proceedToCheckout();
 
             PaymentManagement paymentManagement = new PaymentManagement(driver);
