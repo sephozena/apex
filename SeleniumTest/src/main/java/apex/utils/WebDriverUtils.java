@@ -96,7 +96,7 @@ public class WebDriverUtils {
     }
     
     // Pause method
-    public void pause(int seconds) {
+    public static void pause(int seconds) {
         try {
             Thread.sleep(seconds * 1000);
         } catch (InterruptedException e) {

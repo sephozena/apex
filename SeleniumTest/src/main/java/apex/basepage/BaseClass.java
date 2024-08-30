@@ -25,6 +25,7 @@ import apex.utils.ConfigManager;
 import apex.utils.ExtentReportManager;
 import apex.utils.ScreenshotUtils;
 import apex.utils.ThreadUtils;
+import apex.utils.WebDriverUtils;
 
 @Listeners(apex.utils.TestListener.class)
 public class BaseClass {
@@ -82,11 +83,11 @@ public class BaseClass {
 		ExtentReportManager.flushReport();
 	}
 
-	public static Logger log() {
+	protected static Logger log() {
 		return ThreadUtils.getLogger();
 	}
 
-	public void captureAndAttachScreenshot(String screenshotName) {
+	protected void captureAndAttachScreenshot(String screenshotName) {
 		ScreenshotUtils.captureAndAttachScreenshot(driver, screenshotName);
 	}
 //
@@ -99,7 +100,11 @@ public class BaseClass {
 //    }
 	
     // New method to access ScreenshotUtils.logWithScreenshot
-    public void logWithScreenshot(String message, Status status) {
+    protected void logWithScreenshot(String message, Status status) {
          ScreenshotUtils.logWithScreenshot(driver, message, status);
+    }
+    
+    protected void pause(int seconds) {
+    	WebDriverUtils.pause(seconds);
     }
 }

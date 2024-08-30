@@ -80,7 +80,7 @@ public class OrderManagement extends BaseClass{
      */
     public void proceedToCheckout() {
     	mainActions.proceedToCheckout();
-    	driverUtils.pause(3);
+    	pause(3);
     	assertThat(checkoutActions.frmCheckout().isDisplayed()).describedAs("Checkout form is NOT displayed in a not signed-in user!").isTrue();
     	log.info("Checkout form is displayed in a not signed-in user!");
     }
@@ -98,7 +98,7 @@ public class OrderManagement extends BaseClass{
      */
     public void verifySignInPage() {
     	mainActions.clickSignInButton();
-    	driverUtils.pause(1);
+    	pause(1);
     	assertThat(signInActions.inputUsername().isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
     	assertThat(signInActions.inputPassword().isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
     	assertThat(signInActions.btnLogin().isDisplayed()).describedAs("The Log-in button is not displayed").isTrue();
