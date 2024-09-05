@@ -6,6 +6,7 @@ package apex.utils;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.ThreadContext;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -26,6 +27,11 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onTestStart(ITestResult result) {
+	    String testName = result.getMethod().getMethodName();
+	    String testId = testName.split("_")[0]; // Extract prefix before underscore
+	    ThreadContext.put("testId", testId); // Set testId in logging context
+
+		
 //		String browser = result.getTestContext().getCurrentXmlTest().getParameter("browser");
         String browser = ThreadUtils.getBrowserName(); // Get browser from ThreadUtils
 		if (browser == null) {

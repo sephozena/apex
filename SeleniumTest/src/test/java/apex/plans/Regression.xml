@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Test Suite" verbose="5" parallel="tests"
-	thread-count="1">
+	thread-count="4">
 
 	<listeners>
 		<listener class-name="apex.utils.TestListener" />
 	</listeners>
 
-	<test name="Test Case 1">
+	<test name="TCAFS01">
 		<parameter name="browser" value="chrome" />
 		<classes>
 			<class
 				name="apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout" />
 		</classes>
 	</test>
-	<test name="Test Case 2">
+	<test name="TCAFS02">
 		<parameter name="browser" value="firefox" />
 		<classes>
 			<class
 				name="apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities" />
 		</classes>
 	</test>
-	<test name="Test Case 3">
+	<test name="TCAFS03">
 		<parameter name="browser" value="chrome" />
 		<classes>
 			<class
 				name="apex.scripts.TCAFS03_SignedIn_ViewOrderHistory" />
 		</classes>
 	</test>
-	<test name="Test Case 4">
+	<test name="TCAFS04">
 		<parameter name="browser" value="firefox" />
 		<classes>
 			<class

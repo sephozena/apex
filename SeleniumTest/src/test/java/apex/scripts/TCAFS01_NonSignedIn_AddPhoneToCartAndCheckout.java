@@ -10,8 +10,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.aventstack.extentreports.Status;
-
 import apex.basepage.BaseClass;
 import apex.functions.OrderManagement;
 import apex.functions.PaymentManagement;

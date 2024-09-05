@@ -8,9 +8,14 @@ import java.time.Duration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
@@ -32,26 +37,40 @@ public class BaseClass {
 	protected WebDriver driver;
 	protected static final Logger log = LogManager.getLogger(BaseClass.class);
 
-	private WebDriver initializeDriver(String browser) {
-
+	private WebDriver initializeDriver(String browser, boolean isHeadless) {
 		switch (browser.toLowerCase()) {
-
 		case "chrome":
+			ChromeOptions chromeOptions = new ChromeOptions();
+			if (isHeadless) {
+				chromeOptions.addArguments("--headless");
+			}
 			log.info("Initializing WebDriver for: " + browser);
-			return new ChromeDriver();
+			return new ChromeDriver(chromeOptions);
+
 		case "firefox":
+			FirefoxOptions firefoxOptions = new FirefoxOptions();
+			if (isHeadless) {
+				firefoxOptions.addArguments("--headless");
+			}
 			log.info("Initializing WebDriver for: " + browser);
-			return new FirefoxDriver();
+			return new FirefoxDriver(firefoxOptions);
+
 		default:
 			throw new IllegalArgumentException("Invalid browser name: " + browser);
 		}
 	}
 
+
+
 	@BeforeClass(alwaysRun = true)
-	@Parameters({ "browser" })
-	public void launchBrowser(@Optional("chrome") String browser) {
-        ThreadUtils.setBrowserName(browser);  // Set the browser name in ThreadUtils
-		driver = initializeDriver(browser);
+	@Parameters({ "browser", "headless" })
+	public void launchBrowser(ITestContext context, @Optional("chrome") String browser,@Optional("false") boolean isHeadless) {
+		String testName = context.getCurrentXmlTest().getName();
+		String testId = testName.split("_")[0]; // Extract prefix before underscore
+		ThreadContext.put("testId", testId); // Set testId in logging context
+
+		ThreadUtils.setBrowserName(browser); // Set the browser name in ThreadUtils
+		driver = initializeDriver(browser, isHeadless);
 		ThreadUtils.setDriverRef(driver);
 		ThreadUtils.setLogger(log);
 		driver.manage().window().maximize();
@@ -59,6 +78,7 @@ public class BaseClass {
 
 		String baseUrl = ConfigManager.getProperty("baseUrl");
 		driver.get(baseUrl);
+
 		log.info("Setting up the base url: " + baseUrl);
 
 	}
@@ -68,7 +88,9 @@ public class BaseClass {
 		if (driver != null) {
 			driver.quit();
 			log.info("Browser closed.");
+			ThreadUtils.setDriverRef(null); // Clean up thread-local reference
 		}
+		ThreadContext.clearAll();
 	}
 
 	@BeforeSuite
@@ -90,21 +112,12 @@ public class BaseClass {
 	protected void captureAndAttachScreenshot(String screenshotName) {
 		ScreenshotUtils.captureAndAttachScreenshot(driver, screenshotName);
 	}
-//
-//    public void handleTestFailure(String screenshotName) {
-//        log.error("Test failed: " + screenshotName);
-//        captureAndAttachScreenshot(screenshotName);
-//        ExtentReportManager.getTest().log(Status.FAIL, "Test failed: " + screenshotName);
-//        // Explicitly fail the test to ensure it is recorded as failed in the TestListener
-//        throw new AssertionError("Test failed: " + screenshotName);
-//    }
-	
-    // New method to access ScreenshotUtils.logWithScreenshot
-    protected void logWithScreenshot(String message, Status status) {
-         ScreenshotUtils.logWithScreenshot(driver, message, status);
-    }
-    
-    protected void pause(int seconds) {
-    	WebDriverUtils.pause(seconds);
-    }
+
+	protected void logWithScreenshot(String message, Status status) {
+		ScreenshotUtils.logWithScreenshot(driver, message, status);
+	}
+
+	protected void pause(int seconds) {
+		WebDriverUtils.pause(seconds);
+	}
 }

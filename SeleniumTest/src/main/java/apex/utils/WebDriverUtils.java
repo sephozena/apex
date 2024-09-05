@@ -8,6 +8,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,6 +43,24 @@ public class WebDriverUtils {
             element.click();
         }
     }
+    
+    public void clickWithRetry(WebElement element, int retryCount) {
+        int attempts = 0;
+        while (attempts < retryCount) {
+            try {
+                waitForElementToBeClickable(element, Duration.ofSeconds(10));
+                element.click();
+                break;
+            } catch (StaleElementReferenceException | TimeoutException e) {
+                attempts++;
+                if (attempts == retryCount) {
+                    throw new RuntimeException("Element not clickable after " + retryCount + " attempts", e);
+                }
+                pause(2); // Add small delay between retries
+            }
+        }
+    }
+    
 
 
     public boolean isElementPresent(By locator) {

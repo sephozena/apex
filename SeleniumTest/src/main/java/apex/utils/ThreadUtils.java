@@ -7,6 +7,7 @@ package apex.utils;
 import org.openqa.selenium.WebDriver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import com.aventstack.extentreports.ExtentTest;
 
 public final class ThreadUtils {
@@ -37,7 +38,7 @@ public final class ThreadUtils {
     public static synchronized Logger getLogger() {
         Logger loggerRef = logger.get();
         if (loggerRef == null) {
-            loggerRef = LogManager.getLogger("DefaultLogger");
+            loggerRef = LogManager.getLogger("Logger_"+ Thread.currentThread().getId());
             logger.set(loggerRef);
             System.out.println("Logger initialized: " + loggerRef.getName()); // Debug output
         }

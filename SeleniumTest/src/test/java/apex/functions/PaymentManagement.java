@@ -33,6 +33,7 @@ public class PaymentManagement extends BaseClass {
     
     public void fillInDetails(String firstName, String lastName, String address, String province, String postalCode) {
     	checkoutActions.fillInCheckoutDetails(firstName, lastName, address, province, postalCode);
+    	log.info("Checkout form has been filled with the following details: " + firstName +" "+ lastName +" "+  address+" "+ province +" "+ postalCode);
     	checkoutActions.submitCheckout();
     }
     
