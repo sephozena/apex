@@ -42,7 +42,7 @@ public class SignInPage extends BasePageObject<SignInPage>{
 	    // Method to perform sign-in
 		public class SignInActions{
 					
-		    public void signIn(String username, String password) {
+		    public SignInActions signIn(String username, String password) {
 		        webDriverUtils.waitForElementToBeClickable(inputUsername, Duration.ofSeconds(5));
 		        
 		        webDriverUtils.clickUsingJS(inputUsername );		        
@@ -53,6 +53,8 @@ public class SignInPage extends BasePageObject<SignInPage>{
 		        inputPassword2.sendKeys(password, Keys.ENTER);
 
 		        webDriverUtils.click(btnLogin);
+		        
+		        return this;
 		        
 		    }
 		    

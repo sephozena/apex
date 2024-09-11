@@ -2,8 +2,14 @@
 .idea
 *.png
 *.class
+*.prefs
+*.classpath
+*.project
+*.class
+SeleniumTest/target/classes/*.class
 SeleniumTest/test-output/
-SeleniumTest/target/
+SeleniumTest/target/*.class
 target/
 test-output/
 SeleniumTest/screenshots/
+basic_selenium/.settings/

@@ -9,6 +9,7 @@
 
 	<test name="TCAFS01">
 		<parameter name="browser" value="chrome" />
+		<parameter name="headless" value="true" />
 		<classes>
 			<class
 				name="apex.scripts.TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout" />
@@ -16,6 +17,7 @@
 	</test>
 	<test name="TCAFS02">
 		<parameter name="browser" value="firefox" />
+		<parameter name="headless" value="true" />
 		<classes>
 			<class
 				name="apex.scripts.TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities" />
@@ -23,6 +25,7 @@
 	</test>
 	<test name="TCAFS03">
 		<parameter name="browser" value="chrome" />
+		<parameter name="headless" value="true" />
 		<classes>
 			<class
 				name="apex.scripts.TCAFS03_SignedIn_ViewOrderHistory" />
@@ -30,6 +33,7 @@
 	</test>
 	<test name="TCAFS04">
 		<parameter name="browser" value="firefox" />
+		<parameter name="headless" value="true" />
 		<classes>
 			<class
 				name="apex.scripts.TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites" />

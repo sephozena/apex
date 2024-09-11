@@ -127,9 +127,10 @@ public class MainPage extends BasePageObject<MainPage>{
 	        webDriverUtils.click(btnMenuHeaderOrders);
 	    }
 	    
-        public void clickDynamicAddButton(int index) {
+        public MainActions clickDynamicAddButton(int index) {
             WebElement addToCartButton = getAddToCartButton(index);
             webDriverUtils.click(addToCartButton);
+            return this;
         }
         
         public void proceedToCheckout() {

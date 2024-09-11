@@ -109,8 +109,7 @@ public class OrderManagement extends BaseClass{
     public void addMultiplePhoneToCartWithQuantities(int newItemQty) {
     	log.info(mainActions.closeCartQty().getAttribute("textContent"));
     	String oldCartQty = mainActions.closeCartQty().getAttribute("textContent");
-    	mainActions.clickDynamicAddButton(1);
-    	mainActions.clickDynamicAddButton(2);
+    	mainActions.clickDynamicAddButton(1).clickDynamicAddButton(2);
     	mainActions.clickDynamicAddButton(3);
     	
     	int itemCount = mainActions.openCartItems().size();
