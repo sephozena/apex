@@ -29,7 +29,7 @@ public class BaseClass {
 	public void launchBrowser(@Optional ("chrome") String browser) {
 		driver = initializeWebDriver(browser);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));		
 	}
 	
 	@AfterClass

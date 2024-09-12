@@ -3,29 +3,31 @@ package functions;
 import org.openqa.selenium.WebDriver;
 
 import base.BaseClass;
+import functions.OrderManagement.OrderActions;
 import pages.LoginPage;
 import pages.LoginPage.LoginActions;
 
-/**
- * Unit test for simple App.
- */
-public class LoginManagement extends BaseClass {
+public class LoginManagement extends BaseClass{
+	
+	private OrderManagement orderManagement;
+	private OrderActions orderActions;
+
 	
 	private LoginPage loginPage;
 	private LoginActions loginActions;
-	
-	public LoginManagement(WebDriver driver) {
+
+	public LoginManagement(WebDriver driver){
+		this.orderManagement = new OrderManagement(driver);
+		this.orderActions = orderManagement.new OrderActions();
+		
 		this.loginPage = new LoginPage(driver);
 		this.loginActions = loginPage.new LoginActions();
 	}
 	
-	
 	public void Login(String username, String password) {
-		var test = "";
-		loginActions.enterUserName(username).enterPassword(password);
-		loginActions.submitLogin();
+		loginActions.enterUsername(username).enterPassword(password);
+		loginActions.clickLogin();
 		
-		
-
+		orderManagement.manageOrders();
 	}
 }
