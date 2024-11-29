@@ -22,11 +22,11 @@ public class PaymentManagement extends BaseClass {
 	private ConfirmationPage confirmationPage;
 	private ConfirmationActions confirmationActions;
 
-    public PaymentManagement(WebDriver driver) {
-        this.checkoutPage = new CheckoutPage(driver);
+    public PaymentManagement() {
+        this.checkoutPage = new CheckoutPage();
         this.checkoutActions = checkoutPage.new CheckoutActions();
         
-        this.confirmationPage = new ConfirmationPage(driver);
+        this.confirmationPage = new ConfirmationPage();
         this.confirmationActions = confirmationPage.new ConfirmationActions();
     }
     

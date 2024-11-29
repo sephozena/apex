@@ -43,17 +43,17 @@ public class TCAFS03_SignedIn_ViewOrderHistory extends BaseClass{
         /*
          * proceed to login
          */
-        OrderManagement orderManagement = new OrderManagement(driver);
+        OrderManagement orderManagement = new OrderManagement();
         orderManagement.verifySignedOutUser();
         orderManagement.verifySignInPage();
         
-        SignInManagement signInManagement = new SignInManagement(driver);
+        SignInManagement signInManagement = new SignInManagement();
         signInManagement.enterValidInfoAndLogin();
         
         orderManagement.addPhoneToCart();
         orderManagement.proceedToCheckout();
         
-        PaymentManagement paymentManagement = new PaymentManagement(driver);
+        PaymentManagement paymentManagement = new PaymentManagement();
         paymentManagement.fillInDetails(
             testData.get("firstName"), 
             testData.get("lastName"), 

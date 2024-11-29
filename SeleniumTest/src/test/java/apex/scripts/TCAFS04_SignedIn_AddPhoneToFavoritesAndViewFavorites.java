@@ -34,11 +34,11 @@ public class TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites extends BaseCl
         /*
          * proceed to login
          */
-        OrderManagement orderManagement = new OrderManagement(driver);
+        OrderManagement orderManagement = new OrderManagement();
         orderManagement.verifySignedOutUser();
         orderManagement.verifySignInPage();
         
-        SignInManagement signInManagement = new SignInManagement(driver);
+        SignInManagement signInManagement = new SignInManagement();
         signInManagement.enterValidInfoAndLogin();
         
         /*

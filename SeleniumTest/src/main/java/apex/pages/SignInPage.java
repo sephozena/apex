@@ -17,8 +17,8 @@ import apex.utils.WebDriverUtils;
 
 public class SignInPage extends BasePageObject<SignInPage>{
 
-		public SignInPage(WebDriver driver) {
-			super(driver);
+		public SignInPage() {
+			super();
 		}
 		
 		@FindBy(how = How.XPATH, using = "//div[@id='username']//input[@id='react-select-2-input']")

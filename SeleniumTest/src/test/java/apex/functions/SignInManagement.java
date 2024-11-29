@@ -26,10 +26,10 @@ public class SignInManagement extends BaseClass {
 	private MainActions mainActions;
 
 
-    public SignInManagement(WebDriver driver) {
-    	this.driverUtils = new WebDriverUtils(driver);
-    	this.signInPage = new SignInPage(driver);
-    	this.mainPage = new MainPage(driver);
+    public SignInManagement() {
+    	this.driverUtils = new WebDriverUtils();
+    	this.signInPage = new SignInPage();
+    	this.mainPage = new MainPage();
     	
     	
     	this.signInActions = signInPage.new SignInActions();

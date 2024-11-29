@@ -32,12 +32,12 @@ public class TCAFS01_NonSignedIn_AddPhoneToCartAndCheckout extends BaseClass {
             assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(baseUrl);
             log.info("Navigated to: " + driver.getCurrentUrl());
 
-            OrderManagement orderManagement = new OrderManagement(driver);
+            OrderManagement orderManagement = new OrderManagement();
             orderManagement.addPhoneToCart();
             logWithScreenshot("phone successfully added to cart", null);
             orderManagement.proceedToCheckout();
 
-            PaymentManagement paymentManagement = new PaymentManagement(driver);
+            PaymentManagement paymentManagement = new PaymentManagement();
             paymentManagement.fillInDetails(
                 testData.get("firstName"),
                 testData.get("lastName"),

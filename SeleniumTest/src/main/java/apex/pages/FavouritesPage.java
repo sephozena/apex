@@ -17,8 +17,8 @@ import apex.utils.WebDriverUtils;
 
 public class FavouritesPage extends BasePageObject<FavouritesPage>{
 
-	public FavouritesPage(WebDriver driver) {
-		super(driver);
+	public FavouritesPage() {
+		super();
 	}
 	
 	

@@ -16,8 +16,8 @@ import apex.utils.WebDriverUtils;
 
 public class OrdersPage extends BasePageObject<OrdersPage>{
 
-	public OrdersPage(WebDriver driver) {
-		super(driver);
+	public OrdersPage() {
+		super();
 	}
 	
 	@FindBy(how = How.XPATH, using = "//*[@class='a-box shipment shipment-is-delivered']")

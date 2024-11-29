@@ -17,8 +17,8 @@ import apex.basepage.BasePageObject;
 
 public class MainPage extends BasePageObject<MainPage>{
 	
-	public MainPage(WebDriver driver) {
-		super(driver);
+	public MainPage() {
+		super();
 	}
 
 	@FindBy(how = How.XPATH, using = "//a[@id='offers']")

@@ -16,8 +16,8 @@ import apex.basepage.BasePageObject;
 
 public class CheckoutPage extends BasePageObject<CheckoutPage> {
 	
-	public CheckoutPage(WebDriver driver) {
-		super(driver);
+	public CheckoutPage() {
+		super();
 	}
 
 	@FindBy(how = How.ID, using = "firstNameInput")

@@ -16,18 +16,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverUtils {
-    private WebDriver driver;
-    private WebDriverWait wait;
+//    private WebDriver driver;
+//    private WebDriverWait wait;
 
-    public WebDriverUtils(WebDriver driver) {
-    	this.driver = ThreadUtils.getDriverRef();
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Initialize WebDriverWait
-
+//    public WebDriverUtils(WebDriver driver) {
+//    	this.driver = ThreadUtils.getDriverRef();
+//        this.wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10)); // Initialize WebDriverWait
+//
+//    }
+    
+    
+    public WebDriver getDriver() {
+      return ThreadUtils.getDriverRef();
     }
     
-    
-    public static WebDriver getDriver() {
-      return ThreadUtils.getDriverRef();
+    private WebDriverWait getWait() {
+        return new WebDriverWait(getDriver(), Duration.ofSeconds(10)); // Default timeout 10 seconds
     }
     
 
@@ -38,7 +42,7 @@ public class WebDriverUtils {
             element.click();
         } catch (Exception e) {
             // Scroll the element into view if necessary
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
             element.click();
         }
     }
@@ -63,7 +67,7 @@ public class WebDriverUtils {
 
 
     public boolean isElementPresent(By locator) {
-        return !driver.findElements(locator).isEmpty();
+        return !getDriver().findElements(locator).isEmpty();
     }
 
     public boolean isElementPresent(WebElement element) {
@@ -74,40 +78,40 @@ public class WebDriverUtils {
         }
     }
     public String getCurrentUrl() {
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
     
     public WebElement findDynamicElement(String xpathTemplate, int index) {
         String xpath = String.format(xpathTemplate, index);
-        return driver.findElement(By.xpath(xpath));
+        return getDriver().findElement(By.xpath(xpath));
     }
     
     public void waitForElementToBeVisible(WebElement element, Duration timeout) {
-        wait.withTimeout(timeout).until(ExpectedConditions.visibilityOf(element));
+        getWait().withTimeout(timeout).until(ExpectedConditions.visibilityOf(element));
     }
 
     
     public void waitForElementToBeClickable(WebElement element, Duration timeout) {
-        wait.withTimeout(timeout).until(ExpectedConditions.elementToBeClickable(element));
+    	getWait().withTimeout(timeout).until(ExpectedConditions.elementToBeClickable(element));
     }
     
     public void typeUsingJS(WebElement element, String text) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].value='" + text + "';", element);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].value='" + text + "';", element);
     }
     
     public void clickUsingJS(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", element);
     }
     
     // Explicit wait method
     public void waitForElementToBeVisible(WebElement element, int seconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
     
     protected WebElement waitForElement(By locator) {
         try {
-            return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (TimeoutException e) {
             throw new RuntimeException("Element not found within the specified wait time: " + locator, e);
         }

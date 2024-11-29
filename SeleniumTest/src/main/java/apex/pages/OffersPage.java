@@ -11,8 +11,8 @@ import apex.utils.WebDriverUtils;
 
 public class OffersPage extends BasePageObject<OffersPage> {
 	
-	public OffersPage(WebDriver driver) {
-		super(driver);
+	public OffersPage() {
+		super();
 	}
 
 }

@@ -13,8 +13,8 @@ import apex.basepage.BasePageObject;
 
 public class ConfirmationPage extends BasePageObject<ConfirmationPage>{
 
-	public ConfirmationPage(WebDriver driver) {
-		super(driver);
+	public ConfirmationPage() {
+		super();
 	}
 	
 	@FindBy(how = How.XPATH, using = "//*[@id='checkout-app']//button[contains(.,'Continue Shopping')]")

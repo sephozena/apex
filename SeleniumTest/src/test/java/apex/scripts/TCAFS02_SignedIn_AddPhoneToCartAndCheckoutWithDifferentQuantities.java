@@ -41,11 +41,11 @@ public class TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities e
 		/*
 		 * Sign-in user
 		 */
-		OrderManagement orderManagement = new OrderManagement(driver);
+		OrderManagement orderManagement = new OrderManagement();
 		orderManagement.verifySignedOutUser();
 		orderManagement.verifySignInPage();
 
-		SignInManagement signInManagement = new SignInManagement(driver);
+		SignInManagement signInManagement = new SignInManagement();
 		signInManagement.enterValidInfoAndLogin();
 
 		orderManagement.addMultiplePhoneToCartWithQuantities(Integer.parseInt(testData.get("verifyNewItemQty")));
@@ -57,7 +57,7 @@ public class TCAFS02_SignedIn_AddPhoneToCartAndCheckoutWithDifferentQuantities e
 		 * proceed on checkout order and do calculations
 		 */
 		orderManagement.proceedToCheckout();
-		PaymentManagement paymentManagement = new PaymentManagement(driver);
+		PaymentManagement paymentManagement = new PaymentManagement();
 		paymentManagement.getTotalAmount();
 	}
 

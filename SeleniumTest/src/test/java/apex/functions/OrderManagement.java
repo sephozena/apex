@@ -43,14 +43,14 @@ public class OrderManagement extends BaseClass{
     private FavouritesPage favouritesPage;
     private FavouritesActions favouritesActions;
 
-    public OrderManagement(WebDriver driver) {
-    	this.driverUtils = new WebDriverUtils(driver);
+    public OrderManagement() {
+    	this.driverUtils = new WebDriverUtils();
     	
-        this.mainPage = new MainPage(driver);
-        this.checkoutPage = new CheckoutPage(driver);
-        this.signInPage = new SignInPage(driver);
-        this.ordersPage = new OrdersPage(driver);
-        this.favouritesPage = new FavouritesPage(driver);
+        this.mainPage = new MainPage();
+        this.checkoutPage = new CheckoutPage();
+        this.signInPage = new SignInPage();
+        this.ordersPage = new OrdersPage();
+        this.favouritesPage = new FavouritesPage();
         
         this.mainActions = mainPage.new MainActions();
         this.checkoutActions = checkoutPage.new CheckoutActions();
