@@ -30,15 +30,7 @@ public class TCAFS04_SignedIn_AddPhoneToFavoritesAndViewFavorites extends BaseCl
     
     @Test(groups = {"signed-in"})
     @Parameters({"browser"})
-    public void TCAFS04() {
-    	String baseUrl = ConfigManager.getProperty("baseUrl");
-    	
-        /*
-         * Verify that navigated to correct environment url
-         */
-//    	assertThat(driver.getCurrentUrl()).describedAs("Browser not matched!").isEqualTo(baseUrl);
-//    	log.info("Navigated to: " + driver.getCurrentUrl());
-    	
+    public void TCAFS04() {    	    	
         /*
          * proceed to login
          */
