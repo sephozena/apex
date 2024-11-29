@@ -21,7 +21,6 @@ public class WebDriverUtils {
 
     public WebDriverUtils(WebDriver driver) {
     	this.driver = ThreadUtils.getDriverRef();
-        this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Initialize WebDriverWait
 
     }
